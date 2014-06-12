@@ -79,9 +79,6 @@
     <Content Include="js\fireworks-js\particle.js" />
     <Content Include="js\fireworks-js\firework.js" />
     <Content Include="js\app.js" />
-    <Content Include="js\fireworks-js\firework.js" />
-    <Content Include="js\fireworks-js\main.js" />
-    <Content Include="js\fireworks-js\particle.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
