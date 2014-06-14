@@ -19,7 +19,8 @@
         fw.canvas.style.left = 0;
         fw.canvas.style.bottom = 0;
         fw.canvas.style.right = 0;
-        fw.canvas.style.pointerEevents = "none";
+        fw.canvas.style.zIndex = 100000;
+        fw.canvas.style.pointerEvents = "none";
         window.document.body.appendChild(fw.canvas);
 
         fw.canvas.width = width;
