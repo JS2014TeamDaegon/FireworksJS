@@ -24,18 +24,51 @@ body {
   right: 0;
   bottom: 0;
   width: 400px;
+  overflow: hidden;
 }
-#fireworks-options .greeting textarea {
-  width: 300px;
+#fireworks-options > .presets {
+  position: absolute;
+  width: 400px;
 }
-#fireworks-options .option {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-#fireworks-options > .panel .panel:first-child {
+#fireworks-options > .presets > .panel .panel:first-child {
   margin-top: 35px;
 }
-#fireworks-options:after {
+#fireworks-options > .presets:after {
+  content: "Presets";
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#fireworks-options > .options {
+  position: absolute;
+  top: 183px;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+}
+#fireworks-options > .options > .panel {
+  height: 100%;
+}
+#fireworks-options > .options > .panel .panel-body {
+  position: relative;
+  height: 100%;
+}
+#fireworks-options > .options > .panel .panel-body .scrollable {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: auto;
+}
+#fireworks-options > .options:after {
   content: "Available Options";
   position: absolute;
   top: 20px;
@@ -45,5 +78,12 @@ body {
   color: #bbb;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+#fireworks-options > .options .greeting textarea {
+  width: 300px;
+}
+#fireworks-options > .options .option {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=app.css.map */

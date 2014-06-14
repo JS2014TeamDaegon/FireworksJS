@@ -33,8 +33,8 @@
         this.limiterTotal = options.limiterTotal || 5;
         this.limiterTick = options.limiterTick || 0;
 
-        // Optional auto launcher -> 1 launch every 100 ticks
-        this.timerTotal = options.timerTotal || 100;
+        // Optional auto launcher -> 1 launch every 70 ticks
+        this.timerTotal = options.timerTotal || 70;
         this.timerTick = options.timerTick || 0;
 
         // Hue start value
@@ -43,6 +43,7 @@
 
         // Canvas Context
         this.ctxFillStyle = options.ctxFillStyle || 'rgba(0,0,0,0.4)';
+        this.ctxLineWidth = options.lineWidth || 2;
 
         // Firework
         // Trail

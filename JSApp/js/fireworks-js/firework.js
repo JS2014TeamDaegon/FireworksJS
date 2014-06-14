@@ -84,6 +84,7 @@
         fireworks.ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
         fireworks.ctx.lineTo(this.x, this.y);
         fireworks.ctx.strokeStyle = 'hsl(' + fireworks.options.hue + ',100%,' + this.brightness + '%)';
+        fireworks.ctx.lineWidth = fireworks.options.ctxLineWidth;
         fireworks.ctx.stroke();
 
         // Draw the pulsing target circle

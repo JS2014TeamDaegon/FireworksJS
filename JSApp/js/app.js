@@ -25,6 +25,9 @@
 
     function applyKnockoutBindings() {
         var options = window.Fireworks.options;
+        var appContext = {};
+
+        // Options
         var observableOptions = {};
         for (var index in options) {
             if (options.hasOwnProperty(index)) {
@@ -34,7 +37,74 @@
                 }.bind(null, index));
             }
         }
+        appContext.options = observableOptions;
 
-        ko.applyBindings(observableOptions, window.document.body);
+        // Presets
+        var presets = ko.observableArray([
+            {
+                name: "Default",
+                options: new window.Fireworks.Options()
+            }, {
+                name: "Max Gravity",
+                options: new window.Fireworks.Options({
+                    particleGravity: 10
+                })
+            }, {
+                name: "Inversed Gravity",
+                options: new window.Fireworks.Options({
+                    particleGravity: -10
+                })
+            },
+            {
+                name: "Rocket Launcher",
+                options: new window.Fireworks.Options({
+                    lineWidth: 4,
+                    fireworkTrailLength: 10,
+                    fireworkSpeed: 10,
+                    fireworkAcceleration: 1,
+                    fireworkTargetRadius: 10,
+                    particleTrailLength: 30,
+                    particleCount: 150,
+                    particleGravity: -2.5
+                })
+            },
+            {
+                name: "NewYear",
+                options: new window.Fireworks.Options({
+                    particleTrailLength: 10,
+                    timerTotal: 10
+                })
+            },
+            {
+                name: "Exploding Star",
+                options: new window.Fireworks.Options({
+                    particleTrailLength: 30,
+                    particleFriction: 1.1,
+                    particleGravity: -4
+                })
+            },
+            {
+                name: "Super Nova",
+                options: new window.Fireworks.Options({
+                    particleTrailLength: 30,
+                    particleCount: 300,
+                    particleFriction: 1.1,
+                    particleGravity: -4
+                })
+            }
+        ]);
+        appContext.presets = presets;
+        appContext.selectedPreset = ko.observable(presets()[0]);
+        appContext.selectedPreset.subscribe(function (newValue) {
+            for (var index in observableOptions) {
+                if (observableOptions.hasOwnProperty(index)) {
+                    var value = newValue.options[index];
+                    observableOptions[index](value);
+                    window.Fireworks.options[index] = value;
+                }
+            }
+        });
+
+        ko.applyBindings(appContext, window.document.body);
     }
 })(window.App = window.App || {}, window);

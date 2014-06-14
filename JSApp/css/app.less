@@ -27,31 +27,77 @@ body {
     right: 0;
     bottom: 0;
     width: 400px;
+    overflow: hidden;
 
-    .greeting {
-        textarea {
-            width: 300px;
+    > .presets {
+        position: absolute;
+        width: 400px;
+
+        > .panel .panel:first-child {
+            margin-top: 35px;
+        }
+
+        &:after {
+            content: "Presets";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     }
 
-    .option {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    > .panel .panel:first-child {
-        margin-top: 35px
-    }
-
-    &:after {
-        content: "Available Options";
+    > .options {
         position: absolute;
-        top: 20px;
-        left: 30px;
-        font-size: 12px;
-        font-weight: 700;
-        color: #bbb;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        top: 183px;
+        right: 0;
+        bottom: 0;
+        width: 400px;
+
+        > .panel {
+            height: 100%;
+
+            .panel-body {
+                position: relative;
+                height: 100%;
+
+                .scrollable {
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    right: 0;
+                    bottom: 20px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    overflow: auto;
+                }
+            }
+        }
+
+        &:after {
+            content: "Available Options";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .greeting {
+            textarea {
+                width: 300px;
+            }
+        }
+
+        .option {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
     }
 }
