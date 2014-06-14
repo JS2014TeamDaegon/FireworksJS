@@ -21,7 +21,7 @@
 
         // Trail effect
         this.coordinates = [];
-        this.coordinateCount = 3;
+        this.coordinateCount = fw.options.fireworkTrailLength;
 
         while (this.coordinateCount--) {
             this.coordinates.push([this.x, this.y])
@@ -30,15 +30,15 @@
         // Launching angle
         this.angle = Math.atan2(ty - sy, tx - sx)
 
-        //Speed and acceleration -> could be added slider for them
-        this.speed = 2;
-        this.acceleration = 1.05;
+        //Speed and acceleration
+        this.speed = fw.options.fireworkSpeed;
+        this.acceleration = fw.options.fireworkAcceleration;
 
-        // Brightness -> Lightning effect 0 goes black and 100 goes white so we have number between 50 and 80 representing the actual color
-        this.brightness = fw.random(50, 80);
+        // Brightness
+        this.brightness = fw.random(fw.options.fireworkBrightnessRange[0], fw.options.fireworkBrightnessRange[1]);
 
         // Circle target indicator radius
-        this.targetRadius = 1;
+        this.targetRadius = fw.options.fireworkTargetRadius;
     }
 
     // Updater for the fireworks

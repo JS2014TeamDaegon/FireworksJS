@@ -34,6 +34,9 @@
     fw.cw = fw.canvas.clientWidth;
     fw.ch = fw.canvas.clientHeight;
 
+    // Options
+    fw.options = new fw.Options();
+
     // Collections
     // Fireworks
     fw.fireworks = [];
@@ -41,8 +44,8 @@
     // Particles
     fw.particles = [];
 
-    // Hue start value -> could be added a slider to change it, for now I set it to 180
-    fw.hue = 180;
+    // Hue start value
+    fw.hue = fw.options.hue;
 
     // Random generator
     fw.random = function random(min, max) {
@@ -59,20 +62,20 @@
 
     // Explosion particles
     fw.createParticles = function createParticles(x, y) {
-        var particleCount = 30;
+        var particleCount = fw.options.particleCount;
 
         while (particleCount--) {
             fw.particles.push(new fw.Particle(x, y))
         }
     }
 
-    // Launch limeter -> 1 launch per 5 ticks
-    var limiterTotal = 5;
-    var limiterTick = 0;
+    // Launch limeter
+    var limiterTotal = fw.options.limiterTotal;
+    var limiterTick = fw.options.limiterTick;
 
-    // Optional auto launcher -> 1 launch every 80 ticks  -> can be added slider to change the launcher speed
-    var timerTotal = 100;
-    var timerTick = 0;
+    // Optional auto launcher
+    var timerTotal = fw.options.timerTotal;
+    var timerTick = fw.options.timerTick;
 
     // Mouse coordinates
     var mx;
@@ -80,14 +83,19 @@
     var mousedown = false;
 
     // Main loop
-    fw.init = function loop() {
-        window.requestAnimationFrame(loop);
+    fw.init = function loop(options) {
+        if (options != null) {
+            fw.options = new fw.Options(options);
+            reInitializeOptions();
+        }
 
-        fw.hue += 0.5;
+        window.requestAnimationFrame(loop.bind(null, null));
+
+        fw.hue += fw.options.hueStep;
 
         // Clearing the fw.canvas for redraw ...
         fw.ctx.globalCompositeOperation = 'destination-out';
-        fw.ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        fw.ctx.fillStyle = fw.options.ctxFillStyle;
         fw.ctx.fillRect(0, 0, fw.cw, fw.ch);
 
         fw.ctx.globalCompositeOperation = 'lighter'
@@ -109,7 +117,7 @@
         if (timerTick >= timerTotal) {
             if (!mousedown) {
                 fw.fireworks.push(new fw.Firework(fw.cw / 2, fw.ch, fw.random(0, fw.cw), fw.random(0, fw.ch / 2)));
-                timerTick = 0;
+                timerTick = fw.options.timerTick;
             }
         } else {
             timerTick++;
@@ -120,7 +128,7 @@
             if (mousedown) {
                 // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
                 fw.fireworks.push(new fw.Firework(fw.cw / 2, fw.ch, mx, my));
-                limiterTick = 0;
+                limiterTick = fw.options.limiterTick;
             }
         } else {
             limiterTick++;
@@ -143,4 +151,17 @@
         e.preventDefault();
         mousedown = false;
     });
+
+    function reInitializeOptions() {
+        // Hue start value
+        fw.hue = fw.options.hue;
+
+        // Launch limeter
+        limiterTotal = fw.options.limiterTotal;
+        limiterTick = fw.options.limiterTick;
+
+        // Optional auto launcher
+        timerTotal = fw.options.timerTotal;
+        timerTick = fw.options.timerTick;
+    }
 })(window.Fireworks = window.Fireworks || {}, window);

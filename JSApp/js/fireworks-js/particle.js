@@ -8,7 +8,7 @@
 
         // Trail effect
         this.coordinates = [];
-        this.coordinateCount = 5;
+        this.coordinateCount = fw.options.particleTrailLength;
 
         while (this.coordinateCount--) {
             this.coordinates.push([this.x, this.y])
@@ -16,21 +16,21 @@
 
         // Random angle for the exloding particles
         this.angle = fw.random(0, 360 * Math.PI / 180);
-        this.speed = fw.random(1, 10);
+        this.speed = fw.random(fw.options.particleSpeedRange[0], fw.options.particleSpeedRange[1]);
 
         // Friction (slowing down)
-        this.friction = 0.95;
+        this.friction = fw.options.particleFriction;
 
         // Gravity
-        this.gravity = 1;
+        this.gravity = fw.options.particleGravity;
 
         // Hue, brightness, alpha
-        this.hue = fw.random(fw.hue - 15, fw.hue + 15)
-        this.brightness = fw.random(50, 80);
-        this.alpha = 1;
+        this.hue = fw.random(fw.hue - fw.options.particleHueRange[0], fw.hue + fw.options.particleHueRange[1])
+        this.brightness = fw.random(fw.options.particleBrightnessRange[0], fw.options.particleBrightnessRange[1]);
+        this.alpha = fw.options.particleAlpha;
 
         // Particle lifetime
-        this.decay = fw.random(0.015, 0.03);
+        this.decay = fw.random(fw.options.particleDecayRange[0], fw.options.particleDecayRange[1]);
     }
 
     // Updater for the particle
