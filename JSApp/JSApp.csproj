@@ -75,10 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="js\fireworks-js\release\fireworks-js.min.js" />
     <Content Include="js\fireworks-js\main.js" />
     <Content Include="js\fireworks-js\particle.js" />
     <Content Include="js\fireworks-js\firework.js" />
     <Content Include="js\app.js" />
+    <Content Include="tools\jsmin.exe" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +115,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>type "$(ProjectDir)js\fireworks-js\*.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)js\fireworks-js\release\fireworks-js.min.js"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
