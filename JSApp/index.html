@@ -5,20 +5,26 @@
     <link href="css/app.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="input" >
-        <div>
-            <label for="heading" > Enter greating here: </label>
-            <input type="text" id="heading" value="Happy Birthday, Pesho!" >
-        </div>
-        <div>
-            <label for="wishes" > Enter content here: </label>
-            <textarea id="wishes" > Team Daegon wishes you all the best! Lets finish this teamwork! </textarea>
-        </div>
-        <input id="start" type="button" onclick="greet()" value="Preview Greeting!" >
-    </form>
-    <svg id="the-svg" width="1200" height="500" ></svg>
-    <script type="text/javascript" src="js/greet.js"></script>
+    <div id="fireworks-options">
+        <form id="input">
+            <div>
+                <label for="heading"> Enter greating here: </label>
+                <input type="text" id="heading" value="Happy Birthday, Pesho!">
+            </div>
+            <div>
+                <label for="wishes"> Enter content here: </label>
+                <textarea id="wishes"> Team Daegon wishes you all the best! Lets finish this teamwork! </textarea>
+            </div>
+            <input id="start" type="button" onclick="greet()" value="Preview Greeting!">
+        </form>
+        <svg id="the-svg" width="95%" height="500"></svg>
+    </div>
+
+    <!-- IFrame for embeding a web page for preview -->
     <iframe id="fireworks-target" frameborder="0"></iframe>
+
+    <!-- Temp Script -->
+    <script type="text/javascript" src="js/greet.js"></script>
 
     <!-- FireworksJS Debug version -->
     <script src="js/fireworks-js/firework.js"></script>
@@ -33,7 +39,6 @@
 
     <!-- Fireworks Loader -->
     <!--<script src="js/fireworks-js/loader/loader.js"></script>-->
-
     <!--<iframe id="fireworks-target" frameborder="0" ></iframe>-->
 </body>
 </html>
