@@ -14,7 +14,11 @@
         // Canvas
         fw.canvas = document.createElement("canvas");
         fw.canvas.id = "fireworks-field";
-        fw.canvas.style.position = "absolute";
+        fw.canvas.style.position = "fixed";
+        fw.canvas.style.top = "0";
+        fw.canvas.style.left = "0";
+        fw.canvas.style.bottom = "0";
+        fw.canvas.style.right = "0";
         fw.canvas.style.pointerEevents = "none";
         window.document.body.appendChild(fw.canvas);
 
