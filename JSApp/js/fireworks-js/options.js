@@ -16,6 +16,7 @@
             this.width = options.width;
             fw.cw = options.width;
             fw.canvas.width = options.width;
+            fw.svg.style.width = options.width;
         }
         if (options.height !== undefined) {
             if (options.height < 0) {
@@ -25,6 +26,7 @@
             this.height = options.height;
             fw.ch = options.height;
             fw.canvas.height = options.height;
+            fw.svg.style.height = options.height;
         }
 
         // Launch limeter -> 1 launch per 5 ticks

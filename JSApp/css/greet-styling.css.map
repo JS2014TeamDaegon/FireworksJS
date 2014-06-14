@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "greet-styling.css",
+  "sources": [
+    "greet-styling.less"
+  ],
+  "names": [],
+  "mappings": "AAAA,QACI;EACI,mBAAA;EACA,eAAA;EACA,YAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;;AAPR,QAUI;EACI,UAAA;EACA,kBAAA;;AAZR,QAeI;EACI,eAAA;EACA,YAAA;;AAjBR,QAoBI;EACI,iBAAA;EACA,cAAA;EACA,eAAA;EACA,YAAA;;AAxBR,QA2BI;EACI,eAAA;EACA,YAAA;EACA,aAAA;;AA9BR,QAiCI,IAAI;EACA,YAAA"
+}

@@ -42,7 +42,7 @@ function greet() {
 
     function drawText(coordinateX, coordinateY, input, fill, fontSize, fontWeight, fontFamily, stroke, sWidth) {
         var text,
-            strokeColor = stroke || 'none',
+            strokeColor = stroke || 'black',
             strokeWidth = sWidth || 3;
         text = document.createElementNS(svgNameSpace, 'text');
         text.innerHTML = input;
@@ -107,7 +107,3 @@ function getRandomColor() {
 
     return 'rgb(' + red + ',' +  green + ',' + blue +')';
 }
-
-/**
- * Created by ARCHANGEL on 12-Jun-14.
- */

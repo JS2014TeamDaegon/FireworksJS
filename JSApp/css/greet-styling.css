@@ -1,0 +1,31 @@
+.svgtest div {
+  background: #4cff00;
+  font-size: 20px;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+}
+.svgtest label {
+  font: 24px;
+  position: relative;
+}
+.svgtest #heading {
+  font-size: 20px;
+  width: 300px;
+}
+.svgtest #start {
+  margin-left: 20px;
+  display: block;
+  font-size: 20px;
+  width: 200px;
+}
+.svgtest textarea {
+  font-size: 20px;
+  width: 300px;
+  height: 100px;
+}
+.svgtest svg text {
+  width: 100px;
+}
+/*# sourceMappingURL=greet-styling.css.map */

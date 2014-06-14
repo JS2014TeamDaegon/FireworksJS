@@ -66,6 +66,9 @@
     <Content Include="css\app.css.map">
       <DependentUpon>app.css</DependentUpon>
     </Content>
+    <Content Include="css\greet-styling.css.map">
+      <DependentUpon>greet-styling.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -74,6 +77,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="css\greet-styling.less" />
+    <Content Include="css\greet-styling.css">
+      <DependentUpon>greet-styling.less</DependentUpon>
+    </Content>
     <Content Include="index.html" />
     <Content Include="js\fireworks-js\loader\loader.js" />
     <Content Include="js\fireworks-js\options.js" />

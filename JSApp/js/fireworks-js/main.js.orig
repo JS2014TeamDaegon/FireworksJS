@@ -14,18 +14,17 @@
         // Canvas
         fw.canvas = document.createElement("canvas");
         fw.canvas.id = "fireworks-field";
-        setPositionAndAppendToDocument(fw.canvas);
+        fw.canvas.style.position = "fixed";
+        fw.canvas.style.top = 0;
+        fw.canvas.style.left = 0;
+        fw.canvas.style.bottom = 0;
+        fw.canvas.style.right = 0;
+        fw.canvas.style.zIndex = 100000;
+        fw.canvas.style.pointerEvents = "none";
+        window.document.body.appendChild(fw.canvas);
 
         fw.canvas.width = width;
         fw.canvas.height = height;
-
-        // SVG
-        fw.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        fw.svg.id = "the-svg";
-        setPositionAndAppendToDocument(fw.svg);
-
-        fw.svg.style.width = width;
-        fw.svg.style.height = height;
     })();
 
     // Context
@@ -74,9 +73,15 @@
     var limiterTotal = fw.options.limiterTotal;
     var limiterTick = fw.options.limiterTick;
 
+<<<<<<< HEAD
     // Optional auto launcher
     var timerTotal = fw.options.timerTotal;
     var timerTick = fw.options.timerTick;
+=======
+    // Optional auto launcher -> 1 launch every 80 ticks  -> can be added slider to change the launcher speed
+    var timerTotal = 10;
+    var timerTick = 0;
+>>>>>>> 38419fea266238d9259db06312ff24c6896c65f1
 
     // Mouse coordinates
     var mx;
@@ -164,14 +169,5 @@
         // Optional auto launcher
         timerTotal = fw.options.timerTotal;
         timerTick = fw.options.timerTick;
-    }
-
-    function setPositionAndAppendToDocument(element) {
-        element.style.position = "fixed";
-        element.style.top = 0;
-        element.style.left = 0;
-        element.style.zIndex = 100000;
-        element.style.pointerEvents = "none";
-        window.document.body.appendChild(element);
     }
 })(window.Fireworks = window.Fireworks || {}, window);
