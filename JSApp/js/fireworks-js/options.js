@@ -10,7 +10,7 @@
         // Canvas size (undefined => full screen)
         if (options.width !== undefined) {
             if (options.width < 0) {
-                options.width = fireworks.canvasWidth + options.width;
+                options.width = fireworks.canvasWidth + options.width + 20;
             }
 
             this.width = options.width;
