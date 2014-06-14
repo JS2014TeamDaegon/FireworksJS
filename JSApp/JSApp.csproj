@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="js\fireworks-js\loader\loader.js" />
     <Content Include="js\fireworks-js\release\fireworks-js.min.js" />
     <Content Include="js\fireworks-js\main.js" />
     <Content Include="js\fireworks-js\particle.js" />

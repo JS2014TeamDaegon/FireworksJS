@@ -4,23 +4,22 @@
             || window.mozRequestAnimationFrame || function (callback) { window.setTimeout(callback, 1000 / 60); };
     })();
 
-    // Canvas
-    fw.canvas = document.getElementById('fireworks-field');
-
-    // IFrame
-    fw.iframe = document.getElementById('fireworks-target');
-
     // Set width and height
     (function setWidthHeight() {
-        var w = window,
-            d = document,
-            e = d.documentElement,
-            g = d.getElementsByTagName('body')[0],
-            x = w.innerWidth || e.clientWidth || g.clientWidth,
-            y = w.innerHeight || e.clientHeight || g.clientHeight;
+        var docElement = window.document.documentElement,
+            body = window.document.getElementsByTagName('body')[0],
+            width = window.innerWidth || docElement.clientWidth || body.clientWidth,
+            height = window.innerHeight || docElement.clientHeight || body.clientHeight;
 
-        fw.canvas.width = x;
-        fw.canvas.height = y;
+        // Canvas
+        fw.canvas = document.createElement("canvas");
+        fw.canvas.id = "fireworks-field";
+        fw.canvas.style.position = "absolute";
+        fw.canvas.style.pointerEevents = "none";
+        window.document.body.appendChild(fw.canvas);
+
+        fw.canvas.width = width;
+        fw.canvas.height = height;
     })();
 
     // Context
@@ -76,12 +75,8 @@
     var mousedown = false;
 
     // Main loop
-    fw.init = function loop(address) {
-        if (address != null) {
-            fw.iframe.src = address;
-        }
-
-        window.requestAnimationFrame(loop.bind(null, null));
+    fw.init = function loop() {
+        window.requestAnimationFrame(loop);
 
         fw.hue += 0.5;
 

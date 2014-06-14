@@ -4,6 +4,10 @@
     hash = hash || defaultPage;
     window.location.hash = hash;
 
+    // Load iframe
+    var iframe = window.document.getElementById("fireworks-target");
+    iframe.src = "http://" + hash;
+
     // Init
-    window.Fireworks.init("http://" + hash);
+    window.Fireworks.init();
 })(window.App = window.App || {}, window);

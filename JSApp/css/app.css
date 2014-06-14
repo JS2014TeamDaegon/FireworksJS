@@ -8,10 +8,6 @@ body {
   margin: 0;
   padding: 0;
 }
-canvas {
-  position: absolute;
-  pointer-events: none;
-}
 #fireworks-target {
   overflow: hidden;
   overflow-x: hidden;
