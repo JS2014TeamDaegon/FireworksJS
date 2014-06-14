@@ -10,12 +10,10 @@ body {
 }
 #fireworks-target {
   overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
   height: 100%;
   width: 100%;
   position: absolute;
-  top: 0;
+  top: 200px;
   left: 0;
   right: 0;
   bottom: 0;
