@@ -1,5 +1,5 @@
-﻿(function (fw) {
-    fw.Particle = Particle;
+﻿(function (fireworks) {
+    fireworks.Particle = Particle;
 
     // Particle creator
     function Particle(x, y) {
@@ -8,29 +8,29 @@
 
         // Trail effect
         this.coordinates = [];
-        this.coordinateCount = fw.options.particleTrailLength;
+        this.coordinateCount = fireworks.options.particleTrailLength;
 
         while (this.coordinateCount--) {
             this.coordinates.push([this.x, this.y])
         }
 
         // Random angle for the exloding particles
-        this.angle = fw.random(0, 360 * Math.PI / 180);
-        this.speed = fw.random(fw.options.particleSpeedRange[0], fw.options.particleSpeedRange[1]);
+        this.angle = fireworks.random(0, 360 * Math.PI / 180);
+        this.speed = fireworks.random(fireworks.options.particleSpeedRange[0], fireworks.options.particleSpeedRange[1]);
 
         // Friction (slowing down)
-        this.friction = fw.options.particleFriction;
+        this.friction = fireworks.options.particleFriction;
 
         // Gravity
-        this.gravity = fw.options.particleGravity;
+        this.gravity = fireworks.options.particleGravity;
 
         // Hue, brightness, alpha
-        this.hue = fw.random(fw.options.hue - fw.options.particleHueRange[0], fw.options.hue + fw.options.particleHueRange[1])
-        this.brightness = fw.random(fw.options.particleBrightnessRange[0], fw.options.particleBrightnessRange[1]);
-        this.alpha = fw.options.particleAlpha;
+        this.hue = fireworks.random(fireworks.options.hue - fireworks.options.particleHueRange[0], fireworks.options.hue + fireworks.options.particleHueRange[1])
+        this.brightness = fireworks.random(fireworks.options.particleBrightnessRange[0], fireworks.options.particleBrightnessRange[1]);
+        this.alpha = fireworks.options.particleAlpha;
 
         // Particle lifetime
-        this.decay = fw.random(fw.options.particleDecayRange[0], fw.options.particleDecayRange[1]);
+        this.decay = fireworks.random(fireworks.options.particleDecayRange[0], fireworks.options.particleDecayRange[1]);
     }
 
     // Updater for the particle
@@ -52,16 +52,16 @@
         this.alpha -= this.decay;
 
         if (this.alpha <= this.decay) {
-            fw.particles.splice(index, 1);
+            fireworks.particles.splice(index, 1);
         }
     }
 
     // Draw particle
     Particle.prototype.draw = function () {
-        fw.ctx.beginPath();
-        fw.ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
-        fw.ctx.lineTo(this.x, this.y);
-        fw.ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
-        fw.ctx.stroke();
+        fireworks.ctx.beginPath();
+        fireworks.ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+        fireworks.ctx.lineTo(this.x, this.y);
+        fireworks.ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+        fireworks.ctx.stroke();
     }
 })(window.Fireworks = window.Fireworks || {});

@@ -1,41 +1,41 @@
-﻿(function (fw) {
-    fw.Firework = Firework;
+﻿(function (fireworks) {
+    fireworks.Firework = Firework;
 
     // Fireworks creator
-    function Firework(sx, sy, tx, ty) {
+    function Firework(startX, startY, targetX, targetY) {
         // Actual coordinates
-        this.x = sx;
-        this.y = sy;
+        this.x = startX;
+        this.y = startY;
 
         // Starting coordinates
-        this.sx = sx;
-        this.sy = sy;
+        this.startX = startX;
+        this.startY = startY;
 
         // Target coordinates
-        this.tx = tx;
-        this.ty = ty;
+        this.targetX = targetX;
+        this.targetY = targetY;
 
         // Distance to target
-        this.distanceToTarget = fw.calculateDistance(sx, sy, tx, ty);
+        this.distanceToTarget = fireworks.calculateDistance(startX, startY, targetX, targetY);
         this.distanceTraveled = 0;
 
         // Trail effect
         this.coordinates = [];
-        this.coordinateCount = fw.options.fireworkTrailLength;
+        this.coordinateCount = fireworks.options.fireworkTrailLength;
 
         while (this.coordinateCount--) {
             this.coordinates.push([this.x, this.y])
         }
 
         // Launching angle
-        this.angle = Math.atan2(ty - sy, tx - sx)
+        this.angle = Math.atan2(targetY - startY, targetX - startX)
 
         //Speed and acceleration
-        this.speed = fw.options.fireworkSpeed;
-        this.acceleration = fw.options.fireworkAcceleration;
+        this.speed = fireworks.options.fireworkSpeed;
+        this.acceleration = fireworks.options.fireworkAcceleration;
 
         // Brightness
-        this.brightness = fw.random(fw.options.fireworkBrightnessRange[0], fw.options.fireworkBrightnessRange[1]);
+        this.brightness = fireworks.random(fireworks.options.fireworkBrightnessRange[0], fireworks.options.fireworkBrightnessRange[1]);
 
         // Circle target indicator radius
         this.targetRadius = 1;
@@ -50,7 +50,7 @@
         this.coordinates.unshift([this.x, this.y])
 
         // Target radius change
-        if (this.targetRadius < fw.options.fireworkTargetRadius) {
+        if (this.targetRadius < fireworks.options.fireworkTargetRadius) {
             this.targetRadius += 0.3;
         } else {
             this.targetRadius = 1;
@@ -60,35 +60,35 @@
         this.speed *= this.acceleration;
 
         // Velocity (rate of change of the position)
-        var vx = Math.cos(this.angle) * this.speed;
-        var vy = Math.sin(this.angle) * this.speed;
+        var velocityX = Math.cos(this.angle) * this.speed;
+        var velocityY = Math.sin(this.angle) * this.speed;
 
         // Distance traveled with velocities applied
-        this.distanceTraveled = fw.calculateDistance(this.sx, this.sy, this.x + vx, this.y + vy);
+        this.distanceTraveled = fireworks.calculateDistance(this.startX, this.startY, this.x + velocityX, this.y + velocityY);
 
         // Reaching the target point when the explosion have to occur
         if (this.distanceTraveled > this.distanceToTarget) {
             // Explode
-            fw.createParticles(this.tx, this.ty);
+            fireworks.createParticles(this.targetX, this.targetY);
             // Remove target
-            fw.fireworks.splice(index, 1);
+            fireworks.fireworks.splice(index, 1);
         } else {
-            this.x += vx;
-            this.y += vy;
+            this.x += velocityX;
+            this.y += velocityY;
         }
     }
 
     // Draw firework
     Firework.prototype.draw = function () {
-        fw.ctx.beginPath();
-        fw.ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
-        fw.ctx.lineTo(this.x, this.y);
-        fw.ctx.strokeStyle = 'hsl(' + fw.options.hue + ',100%,' + this.brightness + '%)';
-        fw.ctx.stroke();
+        fireworks.ctx.beginPath();
+        fireworks.ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+        fireworks.ctx.lineTo(this.x, this.y);
+        fireworks.ctx.strokeStyle = 'hsl(' + fireworks.options.hue + ',100%,' + this.brightness + '%)';
+        fireworks.ctx.stroke();
 
         // Draw the pulsing target circle
-        fw.ctx.beginPath();
-        fw.ctx.arc(this.tx, this.ty, this.targetRadius, 0, 360 * Math.PI / 180);
-        fw.ctx.stroke();
+        fireworks.ctx.beginPath();
+        fireworks.ctx.arc(this.targetX, this.targetY, this.targetRadius, 0, 360 * Math.PI / 180);
+        fireworks.ctx.stroke();
     }
 })(window.Fireworks = window.Fireworks || {});

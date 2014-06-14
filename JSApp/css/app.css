@@ -24,14 +24,26 @@ body {
   right: 0;
   bottom: 0;
   width: 400px;
-  padding: 15px;
 }
 #fireworks-options .greeting textarea {
   width: 300px;
-  height: 100px;
 }
 #fireworks-options .option {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+#fireworks-options > .panel .panel:first-child {
+  margin-top: 35px;
+}
+#fireworks-options:after {
+  content: "Available Options";
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 /*# sourceMappingURL=app.css.map */

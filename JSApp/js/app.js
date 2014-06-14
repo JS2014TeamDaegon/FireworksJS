@@ -1,42 +1,40 @@
 ﻿(function (app, window) {
-    // Url fetch
-    var hash = window.location.hash.substr(1);
-    if (hash) {
-        // Load iframe
-        var iframe = window.document.getElementById("fireworks-target");
-        iframe.src = "http://" + hash;
-    }
+    window.onload = function () {
+        // Check for page embeding
+        setIFrameSource();
 
-    // Init
-    window.Fireworks.init({ width: -400 });
+        // Init Fireworks
+        window.Fireworks.init({ width: -400 });
 
-    // Knockout
-    ko.numericObservable = function (initialValue) {
-        var _actual = ko.observable(initialValue);
-
-        var result = ko.dependentObservable({
-            read: function () {
-                return _actual();
-            },
-            write: function (newValue) {
-                var parsedValue = parseFloat(newValue);
-                _actual(isNaN(parsedValue) ? newValue : parsedValue);
-            }
-        });
-
-        return result;
+        // Knockout
+        applyKnockoutBindings();
     };
 
-    var options = window.Fireworks.options;
-    var observableOptions = {};
-    for (var index in options) {
-        if (options.hasOwnProperty(index)) {
-            observableOptions[index] = ko.numericObservable(options[index]);
-            observableOptions[index].subscribe(function (propertyName, newValue) {
-                options[propertyName] = newValue;
-            }.bind(null, index));
+    function setIFrameSource() {
+        var hash = getUrlFromHash();
+        if (hash) {
+            // Load iframe
+            var iframe = window.document.getElementById("fireworks-target");
+            iframe.src = "http://" + hash;
         }
     }
 
-    ko.applyBindings(observableOptions, window.document.body);
+    function getUrlFromHash() {
+        return window.location.hash.substr(1);
+    }
+
+    function applyKnockoutBindings() {
+        var options = window.Fireworks.options;
+        var observableOptions = {};
+        for (var index in options) {
+            if (options.hasOwnProperty(index)) {
+                observableOptions[index] = ko.numericObservable(options[index]);
+                observableOptions[index].subscribe(function (propertyName, newValue) {
+                    options[propertyName] = newValue;
+                }.bind(null, index));
+            }
+        }
+
+        ko.applyBindings(observableOptions, window.document.body);
+    }
 })(window.App = window.App || {}, window);

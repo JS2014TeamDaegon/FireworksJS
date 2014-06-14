@@ -1,5 +1,5 @@
-﻿(function (fw) {
-    fw.Options = Options;
+﻿(function (fireworks) {
+    fireworks.Options = Options;
 
     // Default options
     function Options(options) {
@@ -10,23 +10,23 @@
         // Canvas size (undefined => full screen)
         if (options.width !== undefined) {
             if (options.width < 0) {
-                options.width = fw.cw + options.width;
+                options.width = fireworks.canvasWidth + options.width;
             }
 
             this.width = options.width;
-            fw.cw = options.width;
-            fw.canvas.width = options.width;
-            fw.svg.style.width = options.width;
+            fireworks.canvasWidth = options.width;
+            fireworks.canvas.width = options.width;
+            fireworks.svg.style.width = options.width;
         }
         if (options.height !== undefined) {
             if (options.height < 0) {
-                options.height = fw.ch + options.height;
+                options.height = fireworks.canvasHeight + options.height;
             }
 
             this.height = options.height;
-            fw.ch = options.height;
-            fw.canvas.height = options.height;
-            fw.svg.style.height = options.height;
+            fireworks.canvasHeight = options.height;
+            fireworks.canvas.height = options.height;
+            fireworks.svg.style.height = options.height;
         }
 
         // Launch limeter -> 1 launch per 5 ticks
