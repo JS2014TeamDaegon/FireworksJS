@@ -66,9 +66,6 @@
     <Content Include="css\app.css.map">
       <DependentUpon>app.css</DependentUpon>
     </Content>
-    <Content Include="css\greet-styling.css.map">
-      <DependentUpon>greet-styling.css</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -77,19 +74,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="css\greet-styling.less" />
-    <Content Include="css\greet-styling.css">
-      <DependentUpon>greet-styling.less</DependentUpon>
-    </Content>
     <Content Include="index.html" />
     <Content Include="js\fireworks-js\loader\loader.js" />
     <Content Include="js\fireworks-js\options.js" />
+    <Content Include="js\fireworks-js\greeting.js" />
     <Content Include="js\fireworks-js\release\fireworks-js.min.js" />
     <Content Include="js\fireworks-js\main.js" />
     <Content Include="js\fireworks-js\particle.js" />
     <Content Include="js\fireworks-js\firework.js" />
     <Content Include="js\app.js" />
-    <Content Include="js\greet.js" />
+    <Content Include="lib\bootstrap.min.css" />
+    <Content Include="lib\bootstrap.min.js" />
+    <Content Include="lib\jquery.min.js" />
+    <Content Include="lib\knockout.min.js" />
     <Content Include="tools\jsmin.exe" />
     <Content Include="Web.config" />
   </ItemGroup>

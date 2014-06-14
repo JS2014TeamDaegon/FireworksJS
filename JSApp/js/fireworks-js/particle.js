@@ -25,7 +25,7 @@
         this.gravity = fw.options.particleGravity;
 
         // Hue, brightness, alpha
-        this.hue = fw.random(fw.hue - fw.options.particleHueRange[0], fw.hue + fw.options.particleHueRange[1])
+        this.hue = fw.random(fw.options.hue - fw.options.particleHueRange[0], fw.options.hue + fw.options.particleHueRange[1])
         this.brightness = fw.random(fw.options.particleBrightnessRange[0], fw.options.particleBrightnessRange[1]);
         this.alpha = fw.options.particleAlpha;
 

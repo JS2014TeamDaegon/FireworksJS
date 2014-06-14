@@ -45,9 +45,6 @@
     // Particles
     fw.particles = [];
 
-    // Hue start value
-    fw.hue = fw.options.hue;
-
     // Random generator
     fw.random = function random(min, max) {
         return Math.random() * (max - min) + min;
@@ -70,12 +67,7 @@
         }
     }
 
-    // Launch limeter
-    var limiterTotal = fw.options.limiterTotal;
     var limiterTick = fw.options.limiterTick;
-
-    // Optional auto launcher
-    var timerTotal = fw.options.timerTotal;
     var timerTick = fw.options.timerTick;
 
     // Mouse coordinates
@@ -87,12 +79,11 @@
     fw.init = function loop(options) {
         if (options != null) {
             fw.options = new fw.Options(options);
-            reInitializeOptions();
         }
 
         window.requestAnimationFrame(loop.bind(null, null));
 
-        fw.hue += fw.options.hueStep;
+        fw.options.hue += fw.options.hueStep;
 
         // Clearing the fw.canvas for redraw ...
         fw.ctx.globalCompositeOperation = 'destination-out';
@@ -115,7 +106,7 @@
         }
 
         // This is autolauncher
-        if (timerTick >= timerTotal) {
+        if (timerTick >= fw.options.timerTotal) {
             if (!mousedown) {
                 fw.fireworks.push(new fw.Firework(fw.cw / 2, fw.ch, fw.random(0, fw.cw), fw.random(0, fw.ch / 2)));
                 timerTick = fw.options.timerTick;
@@ -125,11 +116,11 @@
         }
 
         // Mouse launcher
-        if (limiterTick >= limiterTotal) {
+        if (limiterTick >= fw.options.limiterTotal) {
             if (mousedown) {
                 // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
                 fw.fireworks.push(new fw.Firework(fw.cw / 2, fw.ch, mx, my));
-                limiterTick = fw.options.limiterTick;
+                limiterTick = fw.options.fw.options.limiterTick;
             }
         } else {
             limiterTick++;
@@ -152,19 +143,6 @@
         e.preventDefault();
         mousedown = false;
     });
-
-    function reInitializeOptions() {
-        // Hue start value
-        fw.hue = fw.options.hue;
-
-        // Launch limeter
-        limiterTotal = fw.options.limiterTotal;
-        limiterTick = fw.options.limiterTick;
-
-        // Optional auto launcher
-        timerTotal = fw.options.timerTotal;
-        timerTick = fw.options.timerTick;
-    }
 
     function setPositionAndAppendToDocument(element) {
         element.style.position = "fixed";

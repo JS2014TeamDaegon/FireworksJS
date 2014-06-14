@@ -53,7 +53,7 @@
         // Brightness -> Lightning effect 0 goes black and 100 goes white so we have number between 50 and 80 representing the actual color
         this.fireworkBrightnessRange = options.fireworkBrightnessRange || [50, 80];
         // Circle target indicator radius
-        this.fireworkTargetRadius = options.fireworkTargetRadius || 1;
+        this.fireworkTargetRadius = options.fireworkTargetRadius || 5;
 
         // Particle
         // Trail

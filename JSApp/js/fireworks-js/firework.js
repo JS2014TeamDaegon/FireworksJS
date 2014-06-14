@@ -38,7 +38,7 @@
         this.brightness = fw.random(fw.options.fireworkBrightnessRange[0], fw.options.fireworkBrightnessRange[1]);
 
         // Circle target indicator radius
-        this.targetRadius = fw.options.fireworkTargetRadius;
+        this.targetRadius = 1;
     }
 
     // Updater for the fireworks
@@ -50,7 +50,7 @@
         this.coordinates.unshift([this.x, this.y])
 
         // Target radius change
-        if (this.targetRadius < 5) {
+        if (this.targetRadius < fw.options.fireworkTargetRadius) {
             this.targetRadius += 0.3;
         } else {
             this.targetRadius = 1;
@@ -83,7 +83,7 @@
         fw.ctx.beginPath();
         fw.ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
         fw.ctx.lineTo(this.x, this.y);
-        fw.ctx.strokeStyle = 'hsl(' + fw.hue + ',100%,' + this.brightness + '%)';
+        fw.ctx.strokeStyle = 'hsl(' + fw.options.hue + ',100%,' + this.brightness + '%)';
         fw.ctx.stroke();
 
         // Draw the pulsing target circle
