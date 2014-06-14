@@ -71,7 +71,7 @@
     var limiterTick = 0;
 
     // Optional auto launcher -> 1 launch every 80 ticks  -> can be added slider to change the launcher speed
-    var timerTotal = 100;
+    var timerTotal = 10;
     var timerTick = 0;
 
     // Mouse coordinates

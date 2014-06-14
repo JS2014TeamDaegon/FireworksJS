@@ -107,7 +107,3 @@ function getRandomColor() {
 
     return 'rgb(' + red + ',' +  green + ',' + blue +')';
 }
-
-/**
- * Created by ARCHANGEL on 12-Jun-14.
- */
