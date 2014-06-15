@@ -71,18 +71,16 @@
             {
                 name: "Distortion",
                 options: new window.Fireworks.Options({
-                    timerTotal: 59,
-                    timerTick: 5,
-                    ctxLineWidth: 8,
+                    ctxLineWidth: 6,
                     fireworkTrailLength: 2,
-                    fireworkSpeed: 6,
-                    fireworkAcceleration: 1.03,
-                    fireworkTargetRadius: 1,
-                    particleTrailLength: 3,
-                    particleCount: 61,
-                    particleFriction: 1.09,
-                    particleGravity: 2.7,
-                    particleAlpha: 0.3
+                    fireworkSpeed: 4,
+                    fireworkAcceleration: 1.02,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 1,
+                    particleCount: 130,
+                    particleFriction: 0.89,
+                    particleGravity: 0.4,
+                    particleAlpha: 0.7
                 })
             },
             {
