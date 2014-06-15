@@ -37,8 +37,6 @@
             {
                 name: "Distortion",
                 options: new window.Fireworks.Options({
-                    limiterTotal: 9,
-                    limiterTick: 1,
                     timerTotal: 59,
                     timerTick: 5,
                     ctxLineWidth: 8,

@@ -45,6 +45,9 @@ body {
   -ms-word-break: break-all;
   word-break: break-all;
 }
+#fireworks-options > .presets .url-choose {
+  margin-top: 20px;
+}
 #fireworks-options > .presets:after {
   content: "Presets";
   position: absolute;
@@ -58,7 +61,7 @@ body {
 }
 #fireworks-options > .options {
   position: absolute;
-  top: 183px;
+  top: 200px;
   right: 0;
   bottom: 0;
   width: 400px;

@@ -52,14 +52,7 @@
             fireworks.particles.push(new fireworks.Particle(x, y))
         }
     }
-
-    var limiterTick = fireworks.options.limiterTick;
     var timerTick = fireworks.options.timerTick;
-
-    // Mouse coordinates
-    var mouseX;
-    var mouseY;
-    var mousedown = false;
 
     // Main loop
     fireworks.init = function loop(options) {
@@ -93,42 +86,12 @@
 
         // This is autolauncher
         if (timerTick >= fireworks.options.timerTotal) {
-            if (!mousedown) {
-                fireworks.fireworks.push(new fireworks.Firework(fireworks.canvasWidth / 2, fireworks.canvasHeight, fireworks.random(0, fireworks.canvasWidth), fireworks.random(0, fireworks.canvasHeight / 2)));
-                timerTick = fireworks.options.timerTick;
-            }
+            fireworks.fireworks.push(new fireworks.Firework(fireworks.canvasWidth / 2, fireworks.canvasHeight, fireworks.random(0, fireworks.canvasWidth), fireworks.random(0, fireworks.canvasHeight / 2)));
+            timerTick = fireworks.options.timerTick;
         } else {
             timerTick++;
         }
-
-        // Mouse launcher
-        if (limiterTick >= fireworks.options.limiterTotal) {
-            if (mousedown) {
-                // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
-                fireworks.fireworks.push(new fireworks.Firework(fireworks.canvasWidth / 2, fireworks.canvasHeight, mouseX, mouseY));
-                limiterTick = fireworks.options.fireworks.options.limiterTick;
-            }
-        } else {
-            limiterTick++;
-        }
     }
-
-    // Mouse events
-    // Update mouse coordinates on move
-    fireworks.canvas.addEventListener('mousemove', function (e) {
-        mouseX = e.pageX - fireworks.canvas.offsetLeft;
-        mouseY = e.pageY - fireworks.canvas.offsetTop;
-    });
-
-    fireworks.canvas.addEventListener('mousedown', function (e) {
-        e.preventDefault();
-        mousedown = true;
-    });
-
-    fireworks.canvas.addEventListener('mouseup', function (e) {
-        e.preventDefault();
-        mousedown = false;
-    });
 
     // OnResize
     window.onresize = function () {

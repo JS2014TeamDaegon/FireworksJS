@@ -31,10 +31,6 @@
             fireworks.svg.style.height = options.height;
         }
 
-        // Launch limeter -> 1 launch per 5 ticks
-        this.limiterTotal = options.limiterTotal || 5;
-        this.limiterTick = options.limiterTick || 0;
-
         // Optional auto launcher -> 1 launch every 70 ticks
         this.timerTotal = options.timerTotal || 70;
         this.timerTick = options.timerTick || 0;

@@ -55,9 +55,17 @@
         appContext.selectedPreset(customPreset);
     }
 
-    function setIFrameSource() {
-        var hash = getUrlFromHash();
+    app.load = function () {
+        setIFrameSource($(".url-of-page").first().val())
+    }
+
+    function setIFrameSource(hash) {
+        var hash = hash || getUrlFromHash();
         if (hash) {
+            if (hash.indexOf("http://") !== -1) {
+                hash = hash.replace("http://", "");
+            }
+
             // Load iframe
             var iframe = window.document.getElementById("fireworks-target");
             iframe.src = "http://" + hash;
