@@ -5,33 +5,21 @@
     })();
 
     // Create canvas and svg
-    var docElement = window.document.documentElement,
-        body = window.document.getElementsByTagName('body')[0],
-        width = window.innerWidth || docElement.clientWidth || body.clientWidth,
-        height = window.innerHeight || docElement.clientHeight || body.clientHeight;
-
     // Canvas
     fireworks.canvas = document.createElement("canvas");
     fireworks.canvas.id = "fireworks-field";
     setPositionAndAppendToDocument(fireworks.canvas);
-
-    fireworks.canvas.width = width;
-    fireworks.canvas.height = height;
 
     // SVG
     fireworks.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     fireworks.svg.id = "the-svg";
     setPositionAndAppendToDocument(fireworks.svg);
 
-    fireworks.svg.style.width = width;
-    fireworks.svg.style.height = height;
-
     // Context
     fireworks.ctx = fireworks.canvas.getContext('2d');
 
     // Dimensions
-    fireworks.canvasWidth = fireworks.canvas.clientWidth;
-    fireworks.canvasHeight = fireworks.canvas.clientHeight;
+    setWidthAndHeight();
 
     // Options
     fireworks.options = new fireworks.Options();
@@ -141,6 +129,32 @@
         e.preventDefault();
         mousedown = false;
     });
+
+    // OnResize
+    window.onresize = function () {
+        setWidthAndHeight();
+    };
+
+    function setWidthAndHeight() {
+        var docElement = window.document.documentElement,
+            body = window.document.getElementsByTagName('body')[0],
+            width = window.innerWidth || docElement.clientWidth || body.clientWidth,
+            height = window.innerHeight || docElement.clientHeight || body.clientHeight;
+
+        if (fireworks.options !== undefined) {
+            fireworks.options.width = width;
+            fireworks.options.height = height;
+        }
+
+        fireworks.canvas.width = width;
+        fireworks.canvas.height = height;
+
+        fireworks.svg.style.width = width;
+        fireworks.svg.style.height = height;
+
+        fireworks.canvasWidth = width;
+        fireworks.canvasHeight = height;
+    }
 
     function setPositionAndAppendToDocument(element) {
         element.style.position = "fixed";

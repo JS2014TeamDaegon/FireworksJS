@@ -9,6 +9,7 @@
 
         // Canvas size (undefined => full screen)
         if (options.width !== undefined) {
+            // If negative value is set, lower the width from the right (Mainly for the Demo App)
             if (options.width < 0) {
                 options.width = fireworks.canvasWidth + options.width + 20;
             }
@@ -19,6 +20,7 @@
             fireworks.svg.style.width = options.width;
         }
         if (options.height !== undefined) {
+            // If negative value is set, lower the height from the bottom (Mainly for the Demo App)
             if (options.height < 0) {
                 options.height = fireworks.canvasHeight + options.height;
             }

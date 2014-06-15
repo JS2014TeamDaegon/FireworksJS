@@ -26,83 +26,56 @@
     function applyKnockoutBindings() {
         var options = window.Fireworks.options;
         var appContext = {};
+        var disablePresetChangeToCustom = false;
 
         // Options
         var observableOptions = {};
-        for (var index in options) {
-            if (options.hasOwnProperty(index)) {
-                observableOptions[index] = ko.numericObservable(options[index]);
-                observableOptions[index].subscribe(function (propertyName, newValue) {
+        // Map Current options to observables
+        for (var property in options) {
+            if (options.hasOwnProperty(property)) {
+                observableOptions[property] = ko.numericObservable(options[property]);
+                // On observable change
+                observableOptions[property].subscribe(function (propertyName, newValue) {
+                    if (!disablePresetChangeToCustom) {
+                        // Change the preset to Custom
+                        if (appContext.selectedPreset().name != "Custom") {
+                            appContext.selectedPreset(appContext.presets()[appContext.presets().length - 1])
+                        }
+                    }
+
+                    // Update current option's value
                     options[propertyName] = newValue;
-                }.bind(null, index));
+                }.bind(null, property));
             }
         }
         appContext.options = observableOptions;
 
-        // Presets
-        var presets = ko.observableArray([
-            {
-                name: "Default",
-                options: new window.Fireworks.Options()
-            }, {
-                name: "Max Gravity",
-                options: new window.Fireworks.Options({
-                    particleGravity: 10
-                })
-            }, {
-                name: "Inversed Gravity",
-                options: new window.Fireworks.Options({
-                    particleGravity: -10
-                })
-            },
-            {
-                name: "Rocket Launcher",
-                options: new window.Fireworks.Options({
-                    lineWidth: 4,
-                    fireworkTrailLength: 10,
-                    fireworkSpeed: 10,
-                    fireworkAcceleration: 1,
-                    fireworkTargetRadius: 10,
-                    particleTrailLength: 30,
-                    particleCount: 150,
-                    particleGravity: -2.5
-                })
-            },
-            {
-                name: "NewYear",
-                options: new window.Fireworks.Options({
-                    particleTrailLength: 10,
-                    timerTotal: 10
-                })
-            },
-            {
-                name: "Exploding Star",
-                options: new window.Fireworks.Options({
-                    particleTrailLength: 30,
-                    particleFriction: 1.1,
-                    particleGravity: -4
-                })
-            },
-            {
-                name: "Super Nova",
-                options: new window.Fireworks.Options({
-                    particleTrailLength: 30,
-                    particleCount: 300,
-                    particleFriction: 1.1,
-                    particleGravity: -4
-                })
-            }
-        ]);
+        // Predefined settings
+        var presets = ko.observableArray(window.FireworkPresets);
         appContext.presets = presets;
+
+        // Choose current preset => Default
         appContext.selectedPreset = ko.observable(presets()[0]);
+        // On current preset change
         appContext.selectedPreset.subscribe(function (newValue) {
-            for (var index in observableOptions) {
-                if (observableOptions.hasOwnProperty(index)) {
-                    var value = newValue.options[index];
-                    observableOptions[index](value);
-                    window.Fireworks.options[index] = value;
+            // Disable the auto change to Custom preset on option's value change
+            disablePresetChangeToCustom = true;
+
+            // Foreach observable option
+            for (var property in observableOptions) {
+                if (observableOptions.hasOwnProperty(property)) {
+                    // Get the new option value
+                    var value = newValue.options[property];
+
+                    // Update the observable option
+                    observableOptions[property](value);
+                    // Update the fireworks option
+                    window.Fireworks.options[property] = value;
                 }
             }
+
+            // Enable preset auto change
+            disablePresetChangeToCustom = false;
         });
 
         ko.applyBindings(appContext, window.document.body);

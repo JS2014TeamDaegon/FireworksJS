@@ -83,6 +83,7 @@
     <Content Include="js\fireworks-js\particle.js" />
     <Content Include="js\fireworks-js\firework.js" />
     <Content Include="js\app.js" />
+    <Content Include="js\presets.js" />
     <Content Include="js\knockoutBindings.js" />
     <Content Include="lib\bootstrap.darkly.min.css" />
     <Content Include="lib\bootstrap.min.css" />

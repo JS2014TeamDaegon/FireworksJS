@@ -12,12 +12,11 @@
         <div class="presets">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <select class="form-control" data-bind="options: presets,
+                    <div class="presets-select">
+                        <select class="form-control" data-bind="options: presets,
                                                                     optionsText: 'name',
                                                                     value: selectedPreset"></select>
-                        </div>
+                        <button type="button" onclick="" class="btn btn-primary generate">Generate Script</button>
                     </div>
                 </div>
             </div>
@@ -28,7 +27,7 @@
                     <div class="scrollable">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3>Greeting</h3>
+                                <h4>Greeting</h4>
                                 <div class="greeting">
                                     <div>
                                         <h5>Enter greating here:</h5>
@@ -38,13 +37,13 @@
                                         <h5>Enter content here:</h5>
                                         <textarea id="wishes">Team Daegon wishes you all the best! Lets finish this teamwork!</textarea>
                                     </div>
-                                    <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary preview">Preview Greeting!</button>
+                                    <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary">Preview Greeting!</button>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3>Line</h3>
+                                <h4>Line</h4>
                                 <div class="option">
                                     <h5>Width: <span data-bind="text: ctxLineWidth"></span></h5>
                                     <input type="range" data-bind="value: ctxLineWidth" min="1" max="20" />
@@ -53,7 +52,7 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3>Timings</h3>
+                                <h4>Timings</h4>
                                 <div class="option">
                                     <h5>Limiter Total: <span data-bind="text: limiterTotal"></span></h5>
                                     <input type="range" data-bind="value: limiterTotal" min="1" max="30" />
@@ -74,7 +73,7 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3>Firework</h3>
+                                <h4>Firework</h4>
                                 <div class="option">
                                     <h5>Trail: <span data-bind="text: fireworkTrailLength"></span></h5>
                                     <input type="range" data-bind="value: fireworkTrailLength" min="1" max="30" />
@@ -95,7 +94,7 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3>Particle</h3>
+                                <h4>Particle</h4>
                                 <div class="option">
                                     <h5>Trail: <span data-bind="text: particleTrailLength"></span></h5>
                                     <input type="range" data-bind="value: particleTrailLength" min="1" max="30" />
@@ -149,6 +148,7 @@
     <script src="js/knockoutBindings.js"></script>
 
     <!-- DemoApp -->
+    <script src="js/presets.js"></script>
     <script src="js/app.js"></script>
 
     <!-- Fireworks Loader -->
