@@ -102,7 +102,6 @@
 
         while (words.length > 0) {
             word = words.shift();
-            console.log(textNode.data.length);
             textNode = document.createTextNode(word + " ");
             if (tSpanElement.innerHTML.length + word.length + size / 20 > width / 35) {
                 tSpanElement.setAttribute('x', coordinateX);
