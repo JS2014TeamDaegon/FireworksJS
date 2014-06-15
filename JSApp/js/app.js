@@ -13,28 +13,8 @@
         applyKnockoutBindings();
 
         // Display initial text
-        $("#text").writeText('Team "Daegon" presents: ');
+        $(".present-text").writeText('Team "Daegon" presents: ');
     };
-
-    (function ($) {
-        $.fn.writeText = function (content) {
-            var contentArray = content.split(""),
-                current = 0,
-                elem = this;
-            var intervalID = setInterval(function () {
-                if (current < contentArray.length) {
-                    elem.text(elem.text() + contentArray[current++]);
-                }
-                else {
-                    clearInterval(intervalID);
-                    setTimeout(function () {
-                        $("#text").text("");
-                    }, 3000);
-                }
-            }, 100);
-        };
-
-    })(jQuery);
 
     app.generateScript = function () {
         var scriptContainer = $("#generateScript").find(".modal-body").first();
