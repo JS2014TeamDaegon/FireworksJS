@@ -52,7 +52,9 @@
             fireworks.particles.push(new fireworks.Particle(x, y));
         }
     };
-    var timerTick = fireworks.options.timerTick;
+
+    // Timer Current Tick
+    var timerTick = 0;
 
     // Main loop
     fireworks.init = function loop(options) {
@@ -87,7 +89,7 @@
         // This is autolauncher
         if (timerTick >= fireworks.options.timerTotal) {
             fireworks.fireworks.push(new fireworks.Firework(fireworks.canvasWidth / 2, fireworks.canvasHeight, fireworks.random(0, fireworks.canvasWidth), fireworks.random(0, fireworks.canvasHeight / 2)));
-            timerTick = fireworks.options.timerTick;
+            timerTick = 0;
         } else {
             timerTick++;
         }
