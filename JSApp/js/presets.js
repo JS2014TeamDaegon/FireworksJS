@@ -20,9 +20,16 @@
                     particleAlpha: 0.3
                 })
             }, {
-                name: "Max Gravity",
+                name: "Rain effect",
                 options: new window.Fireworks.Options({
-                    particleGravity: 10
+                    timerTotal: 40,
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 2,
+                    fireworkSpeed: 3,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 7,
+                    particleCount: 227,
+                    particleGravity: 4.7
                 })
             }, {
                 name: "Inversed Gravity",
