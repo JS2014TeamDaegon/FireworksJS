@@ -117,6 +117,28 @@
                         options[propertyName] = newValue;
                     }.bind(null, property));
                 }
+                else if (isPropertyForRangeBinding(property)) {
+                    observableOptions[property] = ko.numericObservable(options[property][1]);
+                    // On observable change
+                    observableOptions[property].subscribe(function (propertyName, newValue) {
+                        if (!disablePresetChangeToCustom) {
+                            // Apply change to the custom preset
+                            appContext.customPreset.options[propertyName][1] = newValue;
+
+                            // Change the preset to Custom
+                            if (appContext.selectedPreset().name !== "Custom") {
+                                appContext.selectedPreset(appContext.customPreset);
+
+                                observableOptions[propertyName](newValue);
+                                options[propertyName][1] = newValue;
+                                return;
+                            }
+                        }
+
+                        // Update current option's value
+                        options[propertyName][1] = newValue;
+                    }.bind(null, property));
+                }
             }
         }
         appContext.options = observableOptions;
@@ -154,6 +176,14 @@
     }
 
     function isPropertyForBinding(property) {
-        return property !== "hue" && property.indexOf("Range") === -1 && property !== "width" && property !== "height";
+        return property !== "hue" &&
+            property !== "hueStep" &&
+            property.indexOf("Range") === -1 &&
+            property !== "width" &&
+            property !== "height";
+    }
+
+    function isPropertyForRangeBinding(property) {
+        return property.indexOf("Range") !== -1;
     }
 })(window.App = window.App || {}, window);

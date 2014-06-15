@@ -121,6 +121,10 @@
                                     <input type="range" data-bind="value: particleTrailLength" min="1" max="30" />
                                 </div>
                                 <div class="option">
+                                    <h6>Speed: <span data-bind="text: particleSpeedRange"></span></h6>
+                                    <input type="range" data-bind="value: particleSpeedRange" min="-100" max="100" step="1" />
+                                </div>
+                                <div class="option">
                                     <h6>Count: <span data-bind="text: particleCount"></span></h6>
                                     <input type="range" data-bind="value: particleCount" min="1" max="300" />
                                 </div>
@@ -131,6 +135,10 @@
                                 <div class="option">
                                     <h6>Gravity: <span data-bind="text: particleGravity"></span></h6>
                                     <input type="range" data-bind="value: particleGravity" min="-10" max="10" step="0.1" />
+                                </div>
+                                <div class="option">
+                                    <h6>Decay: <span data-bind="text: particleDecayRange"></span></h6>
+                                    <input type="range" data-bind="value: particleDecayRange" min="0.000" max="0.300" step="0.005" />
                                 </div>
                                 <div class="option">
                                     <h6>Alpha: <span data-bind="text: particleAlpha"></span></h6>
