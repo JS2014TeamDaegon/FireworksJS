@@ -4,6 +4,22 @@
                 name: "Default",
                 options: new window.Fireworks.Options()
             }, {
+                name: "Supersonic",
+                options: new window.Fireworks.Options({
+                    timerTotal: 46,
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 1,
+                    fireworkSpeed: 30,
+                    fireworkAcceleration: 1.2,
+                    fireworkTargetRadius: 8,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 30,
+                    particleCount: 300,
+                    particleFriction: 1.01,
+                    particleGravity: 0.4,
+                    particleAlpha: 0.3
+                })
+            }, {
                 name: "Max Gravity",
                 options: new window.Fireworks.Options({
                     particleGravity: 10
