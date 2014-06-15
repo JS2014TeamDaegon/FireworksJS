@@ -18,7 +18,7 @@
 
     app.generateScript = function () {
         var scriptContainer = $("#generateScript").find(".modal-body").first();
-        var scriptTemplate = "(function (w) { var s = document.createElement('script'); s.src = 'https://rawgithub.com/JS2014TeamDaegon/JSApp/master/JSApp/js/fireworks-js/release/fireworks-js.min.js'; s.onload = function () { setTimeout(window.Fireworks.init(optionsPlaceHolder)); }; w.document.head.appendChild(s); })(window);";
+        var scriptTemplate = "(function (w) { var s = document.createElement('script'); s.src = 'https://rawgithub.com/JS2014TeamDaegon/FireworksJS/master/JSApp/js/fireworks-js/release/fireworks-js.min.js'; s.onload = function () { setTimeout(window.Fireworks.init(optionsPlaceHolder)); }; w.document.head.appendChild(s); })(window);";
         var options = "{";
 
         var defaultOptions = new window.Fireworks.Options();
