@@ -56,8 +56,16 @@
             {
                 name: "New Year",
                 options: new window.Fireworks.Options({
-                    particleTrailLength: 10,
-                    timerTotal: 10
+                    timerTotal: 20,
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 2,
+                    fireworkSpeed: 4,
+                    fireworkAcceleration: 1.07,
+                    fireworkTargetRadius: 4,
+                    particleTrailLength: 11,
+                    particleCount: 78,
+                    particleGravity: 0.2,
+                    particleAlpha: 0.8
                 })
             },
             {
