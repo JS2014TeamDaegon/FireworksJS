@@ -52,17 +52,20 @@
                     <div class="scrollable">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h5>Greeting</h5>
+                                <h5>
+                                    Greeting
+                                    <input type="checkbox" data-bind="checked: greeting" />
+                                </h5>
                                 <div class="greeting">
-                                    <div>
-                                        <h6>Enter greating here:</h6>
-                                        <input type="text" id="heading" class="input-sm" value="Happy Birthday, Pesho!" />
-                                    </div>
-                                    <div>
-                                        <h6>Enter content here:</h6>
-                                        <textarea id="wishes">Team Daegon wishes you all the best!</textarea>
-                                    </div>
-                                    <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary btn-sm">Preview Greeting!</button>
+                                    <p>
+                                        <input type="text" class="input-sm" placeholder="Enter title here" data-bind="value: greetingTitle" />
+                                    </p>
+                                    <p>
+                                        <input type="text" class="input-sm" placeholder="Enter subtitle here" data-bind="value: greetingSubtitle" />
+                                    </p>
+                                    <p>
+                                        <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary btn-sm">Preview Greeting!</button>
+                                    </p>
                                 </div>
                             </div>
                         </div>

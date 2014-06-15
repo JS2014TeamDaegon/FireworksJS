@@ -34,6 +34,10 @@
                     var currentValue = currentOptions[property];
 
                     if (defaultValue !== currentValue) {
+                        if (isNaN(parseInt(currentValue))) {
+                            currentValue = "'" + currentValue + "'";
+                        }
+
                         options += property + ":" + currentValue + ",";
                     }
                 }
