@@ -6,16 +6,20 @@
     <link href="lib/bootstrap.darkly.min.css" rel="stylesheet" />
     <!-- App -->
     <link href="css/app.css" rel="stylesheet" />
+    <!-- Font -->
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 </head>
 <body>
+    <text id="text" style="font-family: 'Shadows Into Light'; font-weight: bold; font-size: 60px; color: white"></text>
     <div id="fireworks-options">
         <div class="presets">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="presets-select">
                         <select class="form-control input-sm" data-bind="options: presets,
-                                                                    optionsText: 'name',
-                                                                    value: selectedPreset"></select>
+    optionsText: 'name',
+    value: selectedPreset">
+                        </select>
                         <button type="button" onclick="App.generateScript()" class="btn btn-primary btn-sm generate" data-toggle="modal" data-target="#generateScript">Generate Script</button>
                         <button type="button" onclick="App.copyPresetToCustom()" class="btn btn-primary btn-sm generate">Copy preset to Custom</button>
                         <div class="modal fade" id="generateScript" tabindex="-1" role="dialog" aria-labelledby="generateScriptLabel" aria-hidden="true">
