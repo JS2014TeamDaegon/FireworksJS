@@ -43,7 +43,7 @@
                     particleCount: 140,
                     particleFriction: 0.99,
                     particleGravity: -0.5,
-                    particleAlpha: 0.9 
+                    particleAlpha: 0.9
                 })
             },
             {
@@ -98,4 +98,4 @@
                 options: new window.Fireworks.Options()
             }
     ];
-})(window)
+})(window);

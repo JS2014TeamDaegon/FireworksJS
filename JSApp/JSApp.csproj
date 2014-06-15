@@ -74,6 +74,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\app.min.css">
+      <DependentUpon>app.less</DependentUpon>
+    </Content>
     <Content Include="index.html" />
     <Content Include="js\fireworks-js\loader\loader.js" />
     <Content Include="js\fireworks-js\loader\loader.min.js" />

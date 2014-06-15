@@ -11,7 +11,7 @@
         this.coordinateCount = fireworks.options.particleTrailLength;
 
         while (this.coordinateCount--) {
-            this.coordinates.push([this.x, this.y])
+            this.coordinates.push([this.x, this.y]);
         }
 
         // Random angle for the exloding particles
@@ -25,7 +25,7 @@
         this.gravity = fireworks.options.particleGravity;
 
         // Hue, brightness, alpha
-        this.hue = fireworks.random(fireworks.options.hue - fireworks.options.particleHueRange[0], fireworks.options.hue + fireworks.options.particleHueRange[1])
+        this.hue = fireworks.random(fireworks.options.hue - fireworks.options.particleHueRange[0], fireworks.options.hue + fireworks.options.particleHueRange[1]);
         this.brightness = fireworks.random(fireworks.options.particleBrightnessRange[0], fireworks.options.particleBrightnessRange[1]);
         this.alpha = fireworks.options.particleAlpha;
 
@@ -54,7 +54,7 @@
         if (this.alpha <= this.decay) {
             fireworks.particles.splice(index, 1);
         }
-    }
+    };
 
     // Draw particle
     Particle.prototype.draw = function () {
@@ -63,5 +63,5 @@
         fireworks.ctx.lineTo(this.x, this.y);
         fireworks.ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
         fireworks.ctx.stroke();
-    }
+    };
 })(window.Fireworks = window.Fireworks || {});

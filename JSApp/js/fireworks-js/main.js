@@ -41,22 +41,22 @@
         var distanceX = point1X - point2X;
         var distanceY = point1Y - point2Y;
 
-        return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2))
-    }
+        return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
+    };
 
     // Explosion particles
     fireworks.createParticles = function createParticles(x, y) {
         var particleCount = fireworks.options.particleCount;
 
         while (particleCount--) {
-            fireworks.particles.push(new fireworks.Particle(x, y))
+            fireworks.particles.push(new fireworks.Particle(x, y));
         }
-    }
+    };
     var timerTick = fireworks.options.timerTick;
 
     // Main loop
     fireworks.init = function loop(options) {
-        if (options != null) {
+        if (options !== null) {
             fireworks.options = new fireworks.Options(options);
         }
 
@@ -69,7 +69,7 @@
         fireworks.ctx.fillStyle = fireworks.options.ctxFillStyle;
         fireworks.ctx.fillRect(0, 0, fireworks.canvasWidth, fireworks.canvasHeight);
 
-        fireworks.ctx.globalCompositeOperation = 'lighter'
+        fireworks.ctx.globalCompositeOperation = 'lighter';
         // Update and draw every firework
         var fireworkIndex = fireworks.fireworks.length;
         while (fireworkIndex--) {
@@ -91,7 +91,7 @@
         } else {
             timerTick++;
         }
-    }
+    };
 
     // OnResize
     window.onresize = function () {
