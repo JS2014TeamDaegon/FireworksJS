@@ -87,10 +87,14 @@
             {
                 name: "Super Nova",
                 options: new window.Fireworks.Options({
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 5,
+                    fireworkSpeed: 4,
+                    fireworkShowTarget: false,
                     particleTrailLength: 30,
-                    particleCount: 210,
-                    particleFriction: 1.1,
-                    particleGravity: -4
+                    particleCount: 101,
+                    particleFriction: 1.14,
+                    particleGravity: 8.2
                 })
             },
             {
