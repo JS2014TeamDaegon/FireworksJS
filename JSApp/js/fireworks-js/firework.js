@@ -85,6 +85,18 @@
         fireworks.ctx.lineTo(this.x, this.y);
         fireworks.ctx.strokeStyle = 'hsl(' + fireworks.options.hue + ',100%,' + this.brightness + '%)';
         fireworks.ctx.lineWidth = fireworks.options.ctxLineWidth;
+
+        if (fireworks.options.ctxShadow) {
+            fireworks.ctx.shadowColor = 'rgb(0, 0, 0)';
+            fireworks.ctx.shadowOffsetX = 15;
+            fireworks.ctx.shadowOffsetY = 15;
+        }
+        else {
+            fireworks.ctx.shadowColor = 0;
+            fireworks.ctx.shadowOffsetX = 0;
+            fireworks.ctx.shadowOffsetY = 0;
+        }
+
         fireworks.ctx.stroke();
 
         // Draw the pulsing target circle

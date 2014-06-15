@@ -24,7 +24,7 @@
         for (var property in defaultOptions) {
             if (defaultOptions.hasOwnProperty(property)) {
                 // Ignore dynamic options and ranges
-                if (property != "hue" && property.indexOf("Range") === -1) {
+                if (isPropertyForBinding(property)) {
                     var defaultValue = defaultOptions[property];
                     var currentValue = currentOptions[property];
 
@@ -77,19 +77,26 @@
         // Map Current options to observables
         for (var property in options) {
             if (options.hasOwnProperty(property)) {
-                observableOptions[property] = ko.numericObservable(options[property]);
-                // On observable change
-                observableOptions[property].subscribe(function (propertyName, newValue) {
-                    if (!disablePresetChangeToCustom) {
-                        // Change the preset to Custom
-                        if (appContext.selectedPreset().name != "Custom") {
-                            appContext.selectedPreset(appContext.presets()[appContext.presets().length - 1])
-                        }
-                    }
+                // Ignore dynamic options and ranges
+                if (isPropertyForBinding(property)) {
+                    observableOptions[property] = ko.numericObservable(options[property]);
+                    // On observable change
+                    observableOptions[property].subscribe(function (propertyName, newValue) {
+                        if (!disablePresetChangeToCustom) {
+                            // Change the preset to Custom
+                            if (appContext.selectedPreset().name != "Custom") {
+                                appContext.selectedPreset(appContext.presets()[appContext.presets().length - 1]);
 
-                    // Update current option's value
-                    options[propertyName] = newValue;
-                }.bind(null, property));
+                                observableOptions[propertyName](newValue);
+                                options[propertyName] = newValue;
+                                return;
+                            }
+                        }
+
+                        // Update current option's value
+                        options[propertyName] = newValue;
+                    }.bind(null, property));
+                }
             }
         }
         appContext.options = observableOptions;
@@ -123,5 +130,9 @@
         });
 
         ko.applyBindings(appContext, window.document.body);
+    }
+
+    function isPropertyForBinding(property) {
+        return property !== "hue" && property.indexOf("Range") === -1 && property !== "width" && property !== "height";
     }
 })(window.App = window.App || {}, window);

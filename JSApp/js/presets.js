@@ -17,13 +17,13 @@
             {
                 name: "Rocket Launcher",
                 options: new window.Fireworks.Options({
-                    lineWidth: 4,
+                    ctxLineWidth: 4,
                     fireworkTrailLength: 10,
                     fireworkSpeed: 10,
                     fireworkAcceleration: 1,
                     fireworkTargetRadius: 10,
                     particleTrailLength: 30,
-                    particleCount: 150,
+                    particleCount: 100,
                     particleGravity: -2.5
                 })
             },
@@ -64,7 +64,7 @@
                 name: "Super Nova",
                 options: new window.Fireworks.Options({
                     particleTrailLength: 30,
-                    particleCount: 300,
+                    particleCount: 210,
                     particleFriction: 1.1,
                     particleGravity: -4
                 })
