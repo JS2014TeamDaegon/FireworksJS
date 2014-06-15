@@ -107,8 +107,24 @@
                     particleGravity: 0.5,
                     particleAlpha: 0.7
                 })
-            },
-            {
+            }, {
+                name: "Circle Path",
+                options: new window.Fireworks.Options({
+                    timerTotal:103,
+                    ctxLineWidth:1,
+                    ctxShadow:false,
+                    fireworkTrailLength:1,
+                    fireworkSpeed:7,
+                    fireworkTargetRadius:20,
+                    particleTrailLength:11,
+                    particleCount:239,
+                    particleSpeedRange: [1,1],
+                    particleFriction:1.01,
+                    particleGravity:-0.1,
+                    particleDecayRange: [0.015,0.01]
+                })
+
+            }, {
                 name: "Super Nova",
                 options: new window.Fireworks.Options({
                     ctxLineWidth: 1,
