@@ -34,7 +34,18 @@
             }, {
                 name: "Inversed Gravity",
                 options: new window.Fireworks.Options({
-                    particleGravity: -10
+                    timerTotal: 140,
+                    ctxLineWidth: 1,
+                    ctxShadow: false,
+                    fireworkSpeed: 5,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 6,
+                    particleCount: 154,
+                    particleSpeedRange: [1, 37],
+                    particleFriction: 0.81,
+                    particleGravity: -3.1,
+                    particleAlpha: 0.9,
+                    particleDecayRange: [0.015, 0.025]
                 })
             },
             {
