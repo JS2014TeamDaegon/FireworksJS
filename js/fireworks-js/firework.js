@@ -24,11 +24,11 @@
         this.coordinateCount = fireworks.options.fireworkTrailLength;
 
         while (this.coordinateCount--) {
-            this.coordinates.push([this.x, this.y])
+            this.coordinates.push([this.x, this.y]);
         }
 
         // Launching angle
-        this.angle = Math.atan2(targetY - startY, targetX - startX)
+        this.angle = Math.atan2(targetY - startY, targetX - startX);
 
         //Speed and acceleration
         this.speed = fireworks.options.fireworkSpeed;
@@ -47,7 +47,7 @@
         this.coordinates.pop();
 
         // Add new one
-        this.coordinates.unshift([this.x, this.y])
+        this.coordinates.unshift([this.x, this.y]);
 
         // Target radius change
         if (this.targetRadius < fireworks.options.fireworkTargetRadius) {
@@ -76,7 +76,7 @@
             this.x += velocityX;
             this.y += velocityY;
         }
-    }
+    };
 
     // Draw firework
     Firework.prototype.draw = function () {
@@ -105,5 +105,5 @@
             fireworks.ctx.arc(this.targetX, this.targetY, this.targetRadius, 0, 360 * Math.PI / 180);
             fireworks.ctx.stroke();
         }
-    }
+    };
 })(window.Fireworks = window.Fireworks || {});

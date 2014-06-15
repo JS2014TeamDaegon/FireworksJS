@@ -7,9 +7,10 @@
     <!-- App -->
     <link href="css/app.css" rel="stylesheet" />
     <!-- Font -->
-    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css' />
 </head>
 <body>
+    <div class="present-title"></div>
     <div class="present-text"></div>
     <div id="fireworks-options">
         <div class="presets">
@@ -26,7 +27,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h5 class="modal-title" id="generateScriptLabel">FireworksJS loader script with the choosen settings</h5>
+                                        <h5 class="modal-title" id="generateScriptLabel">FireworksJS loader script with the chosen settings</h5>
                                     </div>
                                     <div class="modal-body">
                                     </div>
@@ -55,11 +56,11 @@
                                 <div class="greeting">
                                     <div>
                                         <h6>Enter greating here:</h6>
-                                        <input type="text" id="heading" class="input-sm" value="Happy Birthday, Pesho!">
+                                        <input type="text" id="heading" class="input-sm" value="Happy Birthday, Pesho!" />
                                     </div>
                                     <div>
                                         <h6>Enter content here:</h6>
-                                        <textarea id="wishes">Team Daegon wishes you all the best! Lets finish this teamwork!</textarea>
+                                        <textarea id="wishes">Team Daegon wishes you all the best!</textarea>
                                     </div>
                                     <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary btn-sm">Preview Greeting!</button>
                                 </div>
@@ -83,11 +84,7 @@
                                 <h5>Timings</h5>
                                 <div class="option">
                                     <h6>Timer Total: <span data-bind="text: timerTotal"></span></h6>
-                                    <input type="range" data-bind="value: timerTotal" min="10" max="150" />
-                                </div>
-                                <div class="option">
-                                    <h6>Timer Tick: <span data-bind="text: timerTick"></span></h6>
-                                    <input type="range" data-bind="value: timerTick" min="0" max="30" />
+                                    <input type="range" data-bind="value: timerTotal" min="1" max="1000" />
                                 </div>
                             </div>
                         </div>

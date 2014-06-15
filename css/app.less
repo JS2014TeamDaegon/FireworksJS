@@ -9,14 +9,36 @@ body {
     padding: 0;
 }
 
-.present-text {
-    position: absolute;
-    top: 100px;
-    left: 100px;
+.gradient() {
+    background: -webkit-linear-gradient(lightblue, royalblue, purple); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(lightblue, royalblue, purple); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(lightblue, royalblue, purple); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(lightblue, royalblue, purple); /* Standard syntax */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.presentFont() {
     font-family: 'Shadows Into Light';
     font-weight: bold;
+}
+
+.present-title {
+    position: absolute;
+    top: 100px;
+    left: 50px;
     font-size: 60px;
-    color: white;
+    .gradient();
+}
+
+.present-text {
+    position: absolute;
+    top: 200px;
+    left: 150px;
+    font-size: 70px;
+    .gradient();
 }
 
 #fireworks-target {

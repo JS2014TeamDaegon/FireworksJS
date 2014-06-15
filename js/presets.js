@@ -4,9 +4,32 @@
                 name: "Default",
                 options: new window.Fireworks.Options()
             }, {
-                name: "Max Gravity",
+                name: "Supersonic",
                 options: new window.Fireworks.Options({
-                    particleGravity: 10
+                    timerTotal: 46,
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 1,
+                    fireworkSpeed: 30,
+                    fireworkAcceleration: 1.2,
+                    fireworkTargetRadius: 8,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 30,
+                    particleCount: 300,
+                    particleFriction: 1.01,
+                    particleGravity: 0.4,
+                    particleAlpha: 0.3
+                })
+            }, {
+                name: "Rain effect",
+                options: new window.Fireworks.Options({
+                    timerTotal: 40,
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 2,
+                    fireworkSpeed: 3,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 7,
+                    particleCount: 227,
+                    particleGravity: 4.7
                 })
             }, {
                 name: "Inversed Gravity",
@@ -17,38 +40,47 @@
             {
                 name: "Rocket Launcher",
                 options: new window.Fireworks.Options({
-                    ctxLineWidth: 4,
-                    fireworkTrailLength: 10,
-                    fireworkSpeed: 10,
-                    fireworkAcceleration: 1,
-                    fireworkTargetRadius: 10,
+                    ctxLineWidth: 2,
+                    timerTotal: 150,
+                    fireworkTrailLength: 1,
+                    fireworkSpeed: 1,
+                    fireworkAcceleration: 1.07,
+                    fireworkTargetRadius: 20,
                     particleTrailLength: 30,
-                    particleCount: 100,
-                    particleGravity: -2.5
+                    particleCount: 140,
+                    particleFriction: 0.99,
+                    particleGravity: -0.5,
+                    particleAlpha: 0.9
                 })
             },
             {
                 name: "New Year",
                 options: new window.Fireworks.Options({
-                    particleTrailLength: 10,
-                    timerTotal: 10
+                    timerTotal: 20,
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 2,
+                    fireworkSpeed: 4,
+                    fireworkAcceleration: 1.07,
+                    fireworkTargetRadius: 4,
+                    particleTrailLength: 11,
+                    particleCount: 78,
+                    particleGravity: 0.2,
+                    particleAlpha: 0.8
                 })
             },
             {
                 name: "Distortion",
                 options: new window.Fireworks.Options({
-                    timerTotal: 59,
-                    timerTick: 5,
-                    ctxLineWidth: 8,
+                    ctxLineWidth: 6,
                     fireworkTrailLength: 2,
-                    fireworkSpeed: 6,
-                    fireworkAcceleration: 1.03,
-                    fireworkTargetRadius: 1,
-                    particleTrailLength: 3,
-                    particleCount: 61,
-                    particleFriction: 1.09,
-                    particleGravity: 2.7,
-                    particleAlpha: 0.3
+                    fireworkSpeed: 4,
+                    fireworkAcceleration: 1.02,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 1,
+                    particleCount: 130,
+                    particleFriction: 0.89,
+                    particleGravity: 0.4,
+                    particleAlpha: 0.7
                 })
             },
             {
@@ -68,10 +100,14 @@
             {
                 name: "Super Nova",
                 options: new window.Fireworks.Options({
+                    ctxLineWidth: 1,
+                    fireworkTrailLength: 5,
+                    fireworkSpeed: 4,
+                    fireworkShowTarget: false,
                     particleTrailLength: 30,
-                    particleCount: 210,
-                    particleFriction: 1.1,
-                    particleGravity: -4
+                    particleCount: 101,
+                    particleFriction: 1.14,
+                    particleGravity: 8.2
                 })
             },
             {
@@ -79,4 +115,4 @@
                 options: new window.Fireworks.Options()
             }
     ];
-})(window)
+})(window);

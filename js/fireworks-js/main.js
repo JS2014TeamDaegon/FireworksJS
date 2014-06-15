@@ -41,22 +41,24 @@
         var distanceX = point1X - point2X;
         var distanceY = point1Y - point2Y;
 
-        return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2))
-    }
+        return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
+    };
 
     // Explosion particles
     fireworks.createParticles = function createParticles(x, y) {
         var particleCount = fireworks.options.particleCount;
 
         while (particleCount--) {
-            fireworks.particles.push(new fireworks.Particle(x, y))
+            fireworks.particles.push(new fireworks.Particle(x, y));
         }
-    }
-    var timerTick = fireworks.options.timerTick;
+    };
+
+    // Timer Current Tick
+    var timerTick = 0;
 
     // Main loop
     fireworks.init = function loop(options) {
-        if (options != null) {
+        if (options !== null) {
             fireworks.options = new fireworks.Options(options);
         }
 
@@ -69,7 +71,7 @@
         fireworks.ctx.fillStyle = fireworks.options.ctxFillStyle;
         fireworks.ctx.fillRect(0, 0, fireworks.canvasWidth, fireworks.canvasHeight);
 
-        fireworks.ctx.globalCompositeOperation = 'lighter'
+        fireworks.ctx.globalCompositeOperation = 'lighter';
         // Update and draw every firework
         var fireworkIndex = fireworks.fireworks.length;
         while (fireworkIndex--) {
@@ -87,11 +89,11 @@
         // This is autolauncher
         if (timerTick >= fireworks.options.timerTotal) {
             fireworks.fireworks.push(new fireworks.Firework(fireworks.canvasWidth / 2, fireworks.canvasHeight, fireworks.random(0, fireworks.canvasWidth), fireworks.random(0, fireworks.canvasHeight / 2)));
-            timerTick = fireworks.options.timerTick;
+            timerTick = 0;
         } else {
             timerTick++;
         }
-    }
+    };
 
     // OnResize
     window.onresize = function () {

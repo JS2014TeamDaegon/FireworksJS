@@ -33,7 +33,6 @@
 
         // Optional auto launcher -> 1 launch every 70 ticks
         this.timerTotal = options.timerTotal || 70;
-        this.timerTick = options.timerTick || 0;
 
         // Hue start value
         this.hue = options.hue || 180;

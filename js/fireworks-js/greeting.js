@@ -2,6 +2,8 @@
     fw.greeting = greeting;
 
     function greeting() {
+        var userScreenWidth = fw.canvasWidth;
+        var userScreenHeight = fw.canvasHeight;
         var textInput = document.getElementById('heading').value;
         var wishes = document.getElementById('wishes').value;
         var wishesColor = "#d1fe01";
@@ -17,31 +19,46 @@
         var MAX_FONT_SIZE = 72; // max size the text will grow to
         var MIN_FONT_SIZE = 32; // min size the text will go to
         var text;
+        var greetings;
 
-        function createMultilineText(output, inputText, rowWidth) {
+        text = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2.5, textInput, "#aaaf18", textFontSize, "bold", textFont);
+        svg.appendChild(text);
+
+        greetings = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2 + textFontSize, wishes, wishesColor, textFontSize, "bold", "Verdana");
+        svg.appendChild(greetings);
+
+        function createMultilineText(output, inputText, coordinateX, coordinateY, size) {
             var words = inputText.split(' ');
+            var word = words.shift();
             var newTSElement = document.createElementNS(svgNameSpace, "tspan");
-            var textNode = document.createTextNode(words[0]);
-            var tSpanElement = newTSElement;
-            var word;
-            var outputPositionX = output.getAttribute('x');
-            var outputPositionY = output.getAttribute('y');
+            var textNode = document.createTextNode(word + " ");
+            var tSpanElement = newTSElement.cloneNode(true);
+            //var dy = 0;
 
+            tSpanElement.setAttribute('x', coordinateX);
+            tSpanElement.setAttribute('y', coordinateY);
+            //tSpanElement.setAttribute('dy', dy);
             tSpanElement.appendChild(textNode);
             output.appendChild(tSpanElement);
+            coordinateY += textFontSize;
+            //dy +=30;
+
             while (words.length > 0) {
                 word = words.shift();
+                console.log(textNode.data.length);
                 textNode = document.createTextNode(word + " ");
-                if (tSpanElement.innerHTML.length + word.length > rowWidth) {
-                    //                tSpanElement.setAttribute('x', outputPositionX);
-                    //                tSpanElement.setAttribute('y', outputPositionY);
-                    //outputPositionY += 20;
+                if (tSpanElement.innerHTML.length + word.length + size / 20 > userScreenWidth / 35) {
+                    tSpanElement.setAttribute('x', coordinateX);
+                    tSpanElement.setAttribute('y', coordinateY);
+                    //dy +=30;
+                    coordinateY += textFontSize;
                     output.appendChild(tSpanElement);
                     tSpanElement = newTSElement.cloneNode(true);
                 }
                 //tSpanElement.firstChild.data += " " + word;
                 tSpanElement.appendChild(textNode);
             }
+            output.appendChild(tSpanElement);
         }
 
         function drawText(coordinateX, coordinateY, input, fill, fontSize, fontWeight, fontFamily, stroke, sWidth) {
@@ -49,8 +66,8 @@
                 strokeColor = stroke || 'black',
                 strokeWidth = sWidth || 3;
             text = document.createElementNS(svgNameSpace, 'text');
-            text.innerHTML = input;
-            //createMultilineText(text, input, textRowWidth);
+            //text.innerHTML = input;
+            createMultilineText(text, input, coordinateX, coordinateY, fontSize);
             text.setAttribute('x', coordinateX);
             text.setAttribute('y', coordinateY);
             text.setAttribute('fill', fill);
@@ -61,12 +78,6 @@
             text.setAttribute('stroke-width', strokeWidth);
             return text;
         }
-
-        var greetings = drawText(250 - textFontSize, 200, wishes, wishesColor, textFontSize, "bold", "Verdana");
-        svg.appendChild(greetings);
-
-        text = drawText(250 - textFontSize, 100, textInput, "#aaaf18", textFontSize, "bold", textFont);
-        svg.appendChild(text);
 
         function updateText() {
             if (animationCounter > 0) {
@@ -86,10 +97,13 @@
                         update = -update;
                     }
                 }
+                text.parentNode.removeChild(text);
                 animationCounter--;
-                text.setAttribute("fill", getRandomColor());
-                text.setAttribute('x', 250 - (textFontSize));
-                text.setAttribute('font-size', textFontSize);
+                text = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2.5, textInput, getRandomColor(), textFontSize, "bold", textFont);
+                svg.appendChild(text);
+                //                text.setAttribute("fill", getRandomColor());
+                //                text.setAttribute('x', userScreenWidth/8 - (textFontSize));
+                //                text.setAttribute('font-size', textFontSize);
             }
             else {
                 text.innerHTML = "";
