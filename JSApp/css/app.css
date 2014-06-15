@@ -38,6 +38,13 @@ body {
 #fireworks-options > .presets .presets-select .generate {
   margin-top: 10px;
 }
+#fireworks-options > .presets .presets-select .modal {
+  overflow-y: hidden;
+}
+#fireworks-options > .presets .presets-select .modal .modal-body {
+  -ms-word-break: break-all;
+  word-break: break-all;
+}
 #fireworks-options > .presets:after {
   content: "Presets";
   position: absolute;

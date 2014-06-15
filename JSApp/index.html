@@ -16,7 +16,23 @@
                         <select class="form-control" data-bind="options: presets,
                                                                     optionsText: 'name',
                                                                     value: selectedPreset"></select>
-                        <button type="button" onclick="" class="btn btn-primary generate">Generate Script</button>
+                        <button type="button" onclick="App.generateScript()" class="btn btn-primary generate" data-toggle="modal" data-target="#generateScript">Generate Script</button>
+                        <button type="button" onclick="App.copyPresetToCustom()" class="btn btn-primary generate">Copy preset to Custom</button>
+                        <div class="modal fade" id="generateScript" tabindex="-1" role="dialog" aria-labelledby="generateScriptLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="generateScriptLabel">FireworksJS loader script with the choosen settings</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

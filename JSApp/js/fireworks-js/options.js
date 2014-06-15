@@ -45,7 +45,7 @@
 
         // Canvas Context
         this.ctxFillStyle = options.ctxFillStyle || 'rgba(0,0,0,0.4)';
-        this.ctxLineWidth = options.lineWidth || 2;
+        this.ctxLineWidth = options.ctxLineWidth || 2;
 
         // Firework
         // Trail

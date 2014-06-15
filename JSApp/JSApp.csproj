@@ -76,6 +76,7 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="js\fireworks-js\loader\loader.js" />
+    <Content Include="js\fireworks-js\loader\loader.min.js" />
     <Content Include="js\fireworks-js\options.js" />
     <Content Include="js\fireworks-js\greeting.js" />
     <Content Include="js\fireworks-js\release\fireworks-js.min.js" />
@@ -126,7 +127,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>type "$(ProjectDir)js\fireworks-js\*.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)js\fireworks-js\release\fireworks-js.min.js"</PostBuildEvent>
+    <PostBuildEvent>type "$(ProjectDir)js\fireworks-js\firework.js", "$(ProjectDir)js\fireworks-js\particle.js", "$(ProjectDir)js\fireworks-js\greeting.js", "$(ProjectDir)js\fireworks-js\options.js", "$(ProjectDir)js\fireworks-js\main.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)js\fireworks-js\release\fireworks-js.min.js"
+"$(ProjectDir)tools\jsmin" &lt; "$(ProjectDir)js\fireworks-js\loader\loader.js" &gt; "$(ProjectDir)js\fireworks-js\loader\loader.min.js"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
