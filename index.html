@@ -52,17 +52,20 @@
                     <div class="scrollable">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h5>Greeting</h5>
+                                <h5>
+                                    Greeting
+                                    <input type="checkbox" data-bind="checked: greeting" />
+                                </h5>
                                 <div class="greeting">
-                                    <div>
-                                        <h6>Enter greating here:</h6>
-                                        <input type="text" id="heading" class="input-sm" value="Happy Birthday, Pesho!" />
-                                    </div>
-                                    <div>
-                                        <h6>Enter content here:</h6>
-                                        <textarea id="wishes">Team Daegon wishes you all the best!</textarea>
-                                    </div>
-                                    <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary btn-sm">Preview Greeting!</button>
+                                    <p>
+                                        <input type="text" class="input-sm" placeholder="Enter title here" data-bind="value: greetingTitle" />
+                                    </p>
+                                    <p>
+                                        <input type="text" class="input-sm" placeholder="Enter subtitle here" data-bind="value: greetingSubtitle" />
+                                    </p>
+                                    <p>
+                                        <button type="button" onclick="window.Fireworks.greeting()" class="btn btn-primary btn-sm">Preview Greeting!</button>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -121,6 +124,10 @@
                                     <input type="range" data-bind="value: particleTrailLength" min="1" max="30" />
                                 </div>
                                 <div class="option">
+                                    <h6>Speed: <span data-bind="text: particleSpeedRange"></span></h6>
+                                    <input type="range" data-bind="value: particleSpeedRange" min="0" max="200" step="1" />
+                                </div>
+                                <div class="option">
                                     <h6>Count: <span data-bind="text: particleCount"></span></h6>
                                     <input type="range" data-bind="value: particleCount" min="1" max="300" />
                                 </div>
@@ -131,6 +138,10 @@
                                 <div class="option">
                                     <h6>Gravity: <span data-bind="text: particleGravity"></span></h6>
                                     <input type="range" data-bind="value: particleGravity" min="-10" max="10" step="0.1" />
+                                </div>
+                                <div class="option">
+                                    <h6>Decay: <span data-bind="text: particleDecayRange"></span></h6>
+                                    <input type="range" data-bind="value: particleDecayRange" min="0.000" max="0.300" step="0.005" />
                                 </div>
                                 <div class="option">
                                     <h6>Alpha: <span data-bind="text: particleAlpha"></span></h6>

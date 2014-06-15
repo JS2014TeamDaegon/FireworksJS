@@ -56,10 +56,17 @@
     // Timer Current Tick
     var timerTick = 0;
 
+    var fireworksStarted = false;
+
     // Main loop
     fireworks.init = function loop(options) {
         if (options !== null) {
             fireworks.options = new fireworks.Options(options);
+        }
+
+        if (!fireworksStarted && fireworks.options.greeting) {
+            fireworks.greeting();
+            fireworks.options.greeting = false;
         }
 
         window.requestAnimationFrame(loop.bind(null, null));
@@ -93,6 +100,8 @@
         } else {
             timerTick++;
         }
+
+        fireworksStarted = true;
     };
 
     // OnResize

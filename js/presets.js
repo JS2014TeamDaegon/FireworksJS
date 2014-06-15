@@ -34,7 +34,18 @@
             }, {
                 name: "Inversed Gravity",
                 options: new window.Fireworks.Options({
-                    particleGravity: -10
+                    timerTotal: 140,
+                    ctxLineWidth: 1,
+                    ctxShadow: false,
+                    fireworkSpeed: 5,
+                    fireworkShowTarget: false,
+                    particleTrailLength: 6,
+                    particleCount: 154,
+                    particleSpeedRange: [1, 37],
+                    particleFriction: 0.81,
+                    particleGravity: -3.1,
+                    particleAlpha: 0.9,
+                    particleDecayRange: [0.015, 0.025]
                 })
             },
             {
@@ -96,8 +107,24 @@
                     particleGravity: 0.5,
                     particleAlpha: 0.7
                 })
-            },
-            {
+            }, {
+                name: "Circle Path",
+                options: new window.Fireworks.Options({
+                    timerTotal:103,
+                    ctxLineWidth:1,
+                    ctxShadow:false,
+                    fireworkTrailLength:1,
+                    fireworkSpeed:7,
+                    fireworkTargetRadius:20,
+                    particleTrailLength:11,
+                    particleCount:239,
+                    particleSpeedRange: [1,1],
+                    particleFriction:1.01,
+                    particleGravity:-0.1,
+                    particleDecayRange: [0.015,0.01]
+                })
+
+            }, {
                 name: "Super Nova",
                 options: new window.Fireworks.Options({
                     ctxLineWidth: 1,

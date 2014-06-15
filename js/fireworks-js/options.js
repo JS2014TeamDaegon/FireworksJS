@@ -41,7 +41,7 @@
         // Canvas Context
         this.ctxFillStyle = options.ctxFillStyle || 'rgba(0,0,0,0.4)';
         this.ctxLineWidth = options.ctxLineWidth || 2;
-        this.ctxShadow = options.ctxShadow === undefined ? true : false;
+        this.ctxShadow = options.ctxShadow === undefined ? true : options.ctxShadow;
 
         // Firework
         // Trail
@@ -54,7 +54,7 @@
         // Circle target indicator radius
         this.fireworkTargetRadius = options.fireworkTargetRadius || 5;
         // Show target
-        this.fireworkShowTarget = options.fireworkShowTarget === undefined ? true : false;
+        this.fireworkShowTarget = options.fireworkShowTarget === undefined ? true : options.fireworkShowTarget;
 
         // Particle
         // Trail
@@ -73,5 +73,10 @@
         this.particleAlpha = options.particleAlpha || 1;
         // Particle lifetime
         this.particleDecayRange = options.particleDecayRange || [0.015, 0.03];
+
+        //Greeting title and content
+        this.greetingTitle = options.greetingTitle || "Merry Christmas";
+        this.greetingSubtitle = options.greetingSubtitle || "and Happy New Year!";
+        this.greeting = options.greeting === undefined ? false : options.greeting;
     }
 })(window.Fireworks = window.Fireworks || {});
