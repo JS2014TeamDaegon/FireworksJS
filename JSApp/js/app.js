@@ -95,9 +95,12 @@
                     // On observable change
                     observableOptions[property].subscribe(function (propertyName, newValue) {
                         if (!disablePresetChangeToCustom) {
+                            // Apply change to the custom preset
+                            appContext.customPreset.options[propertyName] = newValue;
+
                             // Change the preset to Custom
                             if (appContext.selectedPreset().name != "Custom") {
-                                appContext.selectedPreset(appContext.presets()[appContext.presets().length - 1]);
+                                appContext.selectedPreset(appContext.customPreset);
 
                                 observableOptions[propertyName](newValue);
                                 options[propertyName] = newValue;
@@ -116,6 +119,7 @@
         // Predefined settings
         var presets = ko.observableArray(window.FireworkPresets);
         appContext.presets = presets;
+        appContext.customPreset = appContext.presets()[appContext.presets().length - 1];
 
         // Choose current preset => Default
         appContext.selectedPreset = ko.observable(presets()[0]);
