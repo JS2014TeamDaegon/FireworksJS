@@ -42,7 +42,7 @@
 
         // Set script in the container
         scriptContainer.html(scriptTemplate.replace("optionsPlaceHolder", options));
-    }
+    };
 
     app.copyPresetToCustom = function () {
         var customPreset = appContext.presets()[appContext.presets().length - 1];
@@ -56,11 +56,11 @@
         }
 
         appContext.selectedPreset(customPreset);
-    }
+    };
 
     app.load = function () {
-        setIFrameSource($(".url-of-page").first().val())
-    }
+        setIFrameSource($(".url-of-page").first().val());
+    };
 
     function setIFrameSource(hash) {
         var iframe = window.document.getElementById("fireworks-target");
@@ -102,7 +102,7 @@
                             appContext.customPreset.options[propertyName] = newValue;
 
                             // Change the preset to Custom
-                            if (appContext.selectedPreset().name != "Custom") {
+                            if (appContext.selectedPreset().name !== "Custom") {
                                 appContext.selectedPreset(appContext.customPreset);
 
                                 observableOptions[propertyName](newValue);

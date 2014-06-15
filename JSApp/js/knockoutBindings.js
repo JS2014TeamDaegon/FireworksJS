@@ -14,4 +14,4 @@
 
         return result;
     };
-})(window.ko)
+})(window.ko);
