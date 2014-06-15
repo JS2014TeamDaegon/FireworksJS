@@ -17,14 +17,16 @@
             {
                 name: "Rocket Launcher",
                 options: new window.Fireworks.Options({
-                    ctxLineWidth: 4,
-                    fireworkTrailLength: 10,
-                    fireworkSpeed: 10,
-                    fireworkAcceleration: 1,
-                    fireworkTargetRadius: 10,
+                    timerTotal: 150,
+                    fireworkTrailLength: 1,
+                    fireworkSpeed: 1,
+                    fireworkAcceleration: 1.07,
+                    fireworkTargetRadius: 20,
                     particleTrailLength: 30,
-                    particleCount: 100,
-                    particleGravity: -2.5
+                    particleCount: 140,
+                    particleFriction: 0.99,
+                    particleGravity: -0.5,
+                    particleAlpha: 0.9
                 })
             },
             {
