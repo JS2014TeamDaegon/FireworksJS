@@ -13,7 +13,7 @@
         applyKnockoutBindings();
 
         // Display initial text
-        $(".present-text").writeText('Team "Daegon" presents: ');
+        $(".present-text").writeText('Team "Daegon" presents: ... Fireworks API !');
     };
 
     app.generateScript = function () {

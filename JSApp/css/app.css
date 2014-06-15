@@ -14,7 +14,16 @@ body {
   font-family: 'Shadows Into Light';
   font-weight: bold;
   font-size: 60px;
-  color: white;
+  background: -webkit-linear-gradient(#add8e6, #4169e1, #800080);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#add8e6, #4169e1, #800080);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#add8e6, #4169e1, #800080);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#add8e6, #4169e1, #800080);
+  /* Standard syntax */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #fireworks-target {
   overflow: hidden;
@@ -110,4 +119,3 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/*# sourceMappingURL=app.css.map */
