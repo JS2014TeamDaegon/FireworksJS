@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    $.fn.writeText = function (content) {
+    $.fn.writeText = function (content, callback) {
         var contentArray = content.split(""),
             current = 0,
             elem = this;
@@ -9,6 +9,11 @@
             }
             else {
                 clearInterval(intervalID);
+
+                if (callback) {
+                    callback();
+                }
+
                 setTimeout(function () {
                     elem.text("");
                 }, 3000);
