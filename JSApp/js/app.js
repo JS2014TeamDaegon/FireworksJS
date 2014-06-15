@@ -37,6 +37,14 @@
                         options += property + ":" + currentValue + ",";
                     }
                 }
+                else if (isPropertyForRangeBinding(property)) {
+                    var defaultValue = defaultOptions[property][1];
+                    var currentValue = currentOptions[property][1];
+
+                    if (defaultValue !== currentValue) {
+                        options += property + ": [" + defaultOptions[property][0] + "," + currentValue + "],";
+                    }
+                }
             }
         }
 
