@@ -21,13 +21,13 @@
         var text;
         var greetings;
 
-        text = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2, textInput, "#aaaf18", textFontSize, "bold", textFont);
+        text = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2.5, textInput, "#aaaf18", textFontSize, "bold", textFont);
         svg.appendChild(text);
 
-        greetings = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2 + 3 * textFontSize, wishes, wishesColor, textFontSize, "bold", "Verdana");
+        greetings = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2 + textFontSize, wishes, wishesColor, textFontSize, "bold", "Verdana");
         svg.appendChild(greetings);
 
-        function createMultilineText(output, inputText, coordinateX, coordinateY) {
+        function createMultilineText(output, inputText, coordinateX, coordinateY, size) {
             var words = inputText.split(' ');
             var word = words.shift();
             var newTSElement = document.createElementNS(svgNameSpace, "tspan");
@@ -47,7 +47,7 @@
                 word = words.shift();
                 console.log(textNode.data.length);
                 textNode = document.createTextNode(word + " ");
-                if (tSpanElement.innerHTML.length + word.length > userScreenWidth / 35) {
+                if (tSpanElement.innerHTML.length + word.length + size/20 > userScreenWidth/35) {
                     tSpanElement.setAttribute('x', coordinateX);
                     tSpanElement.setAttribute('y', coordinateY);
                     //dy +=30;
@@ -67,7 +67,7 @@
                 strokeWidth = sWidth || 3;
             text = document.createElementNS(svgNameSpace, 'text');
             //text.innerHTML = input;
-            createMultilineText(text, input, coordinateX, coordinateY);
+            createMultilineText(text, input, coordinateX, coordinateY, fontSize);
             text.setAttribute('x', coordinateX);
             text.setAttribute('y', coordinateY);
             text.setAttribute('fill', fill);
@@ -97,8 +97,9 @@
                         update = -update;
                     }
                 }
+                text.parentNode.removeChild(text);
                 animationCounter--;
-                text = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2, textInput, "#aaaf18", textFontSize, "bold", textFont);
+                text = drawText(userScreenWidth / 8 - textFontSize, userScreenHeight / 2.5, textInput, getRandomColor(), textFontSize, "bold", textFont);
                 svg.appendChild(text);
                 //                text.setAttribute("fill", getRandomColor());
                 //                text.setAttribute('x', userScreenWidth/8 - (textFontSize));
