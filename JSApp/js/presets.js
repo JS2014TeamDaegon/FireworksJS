@@ -54,8 +54,15 @@
             {
                 name: "Exploding Star",
                 options: new window.Fireworks.Options({
-                    particleFriction: 1.1,
-                    particleGravity: -4
+                    timerTotal: 150,
+                    ctxLineWidth: 1,
+                    ctxShadow: false,
+                    fireworkTargetRadius: 4,
+                    particleTrailLength: 14,
+                    particleCount: 300,
+                    particleFriction: 1,
+                    particleGravity: 0.5,
+                    particleAlpha: 0.7
                 })
             },
             {
