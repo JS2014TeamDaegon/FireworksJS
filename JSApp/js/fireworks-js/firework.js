@@ -99,9 +99,11 @@
 
         fireworks.ctx.stroke();
 
-        // Draw the pulsing target circle
-        fireworks.ctx.beginPath();
-        fireworks.ctx.arc(this.targetX, this.targetY, this.targetRadius, 0, 360 * Math.PI / 180);
-        fireworks.ctx.stroke();
+        if (fireworks.options.fireworkShowTarget) {
+            // Draw the pulsing target circle
+            fireworks.ctx.beginPath();
+            fireworks.ctx.arc(this.targetX, this.targetY, this.targetRadius, 0, 360 * Math.PI / 180);
+            fireworks.ctx.stroke();
+        }
     }
 })(window.Fireworks = window.Fireworks || {});

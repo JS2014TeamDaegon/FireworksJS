@@ -54,6 +54,8 @@
         this.fireworkBrightnessRange = options.fireworkBrightnessRange || [50, 80];
         // Circle target indicator radius
         this.fireworkTargetRadius = options.fireworkTargetRadius || 5;
+        // Show target
+        this.fireworkShowTarget = options.fireworkShowTarget === undefined ? true : false;
 
         // Particle
         // Trail

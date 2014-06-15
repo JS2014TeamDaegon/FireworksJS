@@ -60,15 +60,19 @@
     }
 
     function setIFrameSource(hash) {
+        var iframe = window.document.getElementById("fireworks-target");
+
+        // Load iframe
         var hash = hash || getUrlFromHash();
         if (hash) {
             if (hash.indexOf("http://") !== -1) {
                 hash = hash.replace("http://", "");
             }
 
-            // Load iframe
-            var iframe = window.document.getElementById("fireworks-target");
             iframe.src = "http://" + hash;
+        }
+        else {
+            iframe.src = "about:blank";
         }
     }
 
