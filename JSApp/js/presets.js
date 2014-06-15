@@ -17,6 +17,7 @@
             {
                 name: "Rocket Launcher",
                 options: new window.Fireworks.Options({
+                    ctxLineWidth: 2,
                     timerTotal: 150,
                     fireworkTrailLength: 1,
                     fireworkSpeed: 1,
